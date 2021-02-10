@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Favorites News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="simple-grid.min.css">
+  <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <h1>My Favorites News</h1>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <h2>Investir Au Cameroun</h2>
+        <div id="investiraucameroun"></div>
+      </div>
+      <div class="col-3">
+        <h2>Journal Du Cameroun</h2>
+        <div id="journalducameroun"></div>
+      </div>
+      <div class="col-3">
+        <h2>Futura Sciences</h2>
+        <div id="futurasciences"></div>
+      </div>
+      <div class="col-3">
+        <h2>Developpez.com</h2>
+        <div id="developpez"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/rss-parser@3.7.6/dist/rss-parser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="news.js"></script>
+</body>
+
+</html>
