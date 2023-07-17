@@ -1,2 +1,6 @@
 
 .idea/
+_site
+_bin
+deno.lock
+__pycache__
