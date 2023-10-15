@@ -4,6 +4,39 @@
 <head>
     <title>{{ page.title }}</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% endif %}
+
+    <!-- START OG:GRAPH -->
+    {% if page.title %}
+    <meta content="{{ page.title }}" property="og:title">
+    {% else %}
+    <meta content="{{ site.title }}" property="og:title">
+    {% endif %}
+
+    {% if page.title and page.url != "/" %}
+    <meta content="article" property="og:type">
+    {% else %}
+    <meta content="website" property="og:type">
+    {% endif %}
+
+    {% if page.image %}
+    <meta content="{{ site.url }}/images/{{ page.image }}" property="og:image">
+    {% else %}
+    <meta content="{{ site.url }}/images/site.png" property="og:image">
+    {% endif %}
+
+    {% if page.description %}
+    <meta content="{{ page.description }}" property="og:description">
+    {% else %}
+    <meta content="{{ site.description }}" property="og:description">
+    {% endif %}
+
+    {% if page.url %}
+    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+    {% endif %}
+    <!-- END OG:GRAPH -->
 </head>
 
 <body>
@@ -20,6 +53,13 @@
         {{ content }}
 
     </main>
+
+    <footer>
+        <ul>
+            <li style="white-space:nowrap;">© Nasser 2023</li>
+            <li><a href="/credits">Credits</a></li>
+        </ul>
+    </footer>
 
 
 </body>

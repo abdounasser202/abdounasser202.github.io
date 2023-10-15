@@ -1,9 +1,11 @@
 ---
 layout: post
 title: Si tu dev une app pour la monétiser, apprends le marketing
+description: Un aspect important quand on dev une app pour gagner de l'argent
+permalink: /marketing/apprendre-les-bases
 author: Nasser
 date: 2023-07-17 21:30:00 +0200
-tags: marketing, dev
+tags: marketing
 ---
 
 Celà fait 3 ans que je travaille sur [Peef](https://www.peef.dev), une application que je n'ai toujours pas pu monétiser. Dernièrement, j'ai compris un aspect très important lorsque tu dev une app : c'est l'onboarding de l'utilisateur qui détermine la suite.
