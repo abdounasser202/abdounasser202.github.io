@@ -9,6 +9,8 @@ tags: dev
 image: screenshot.png
 ---
 
+J'ai passé une aventure en 5h de temps pour résoudre mon problème et apprendre quelque chose de nouveau.
+
 ## Pourquoi ?
 
 Depuis 2 ans, j'ai décidé de contrôler mon expérience en ligne et éliminer le flot d'informations 
@@ -42,6 +44,19 @@ Je peux l'étendre à GitHub, à [Peef](https://peef.dev) ou à tout autre site.
 
 > 🌟 Des extensions similaires existent mais je voulais en profiter pour 
 > me frotter au développement d'extensions Chrome et comprendre comment ça fonctionne
+
+### 🤔 En gros, pour dev une extension chrome, il faut
+
+1. Avoir les bases en développement web
+2. Comprendre le fonctionnement des éléments comme **popup**, **background**, **services workers** etc
+3. Travailler avec l'**API Chrome** et le **manifest**
+4. Savoir utiliser le **DevTools** dans le cadre d'une extension chrome
+5. Avoir la [documentation officielle](https://developer.chrome.com/docs/extensions/) toujours ouverte 
+
+Je développais une extension chrome pour ma première fois et ça m'a pris 5h de temps en tout.
+
+> Le plus difficile à mon niveau était ouvrir le DevTools de l'extension, gérer les permissions
+> et accéder au stockage
 
 ## Au final
 
