@@ -1,6 +1,10 @@
-Publié le 17.07.2023
-
-# Cible une niche bien précise lorsque tu débutes dans l'entrepreneuriat
+---
+layout: post
+title: Cible une niche bien précise lorsque tu débutes dans l'entrepreneuriat
+author: Nasser
+date: 2023-07-17 20:30:00 +0200
+tags: marketing, dev
+---
 
 En voulant toucher tout le monde, on fini par toucher personne
 

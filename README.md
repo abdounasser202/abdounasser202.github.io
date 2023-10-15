@@ -1,7 +1,3 @@
-# Nasser
+# This is my personnal website
 
-Source code of my personnal website
-
-- Build the site
-
-`python blog.py`
+To launch it in local, install Jekyll and run `bundle exec jekyll serve`

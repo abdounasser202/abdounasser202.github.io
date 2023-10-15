@@ -1,6 +1,10 @@
-Publié le 17.07.2023
-
-# Si tu dev une app pour la monétiser, apprends le marketing
+---
+layout: post
+title: Si tu dev une app pour la monétiser, apprends le marketing
+author: Nasser
+date: 2023-07-17 21:30:00 +0200
+tags: marketing, dev
+---
 
 Celà fait 3 ans que je travaille sur [Peef](https://www.peef.dev), une application que je n'ai toujours pas pu monétiser. Dernièrement, j'ai compris un aspect très important lorsque tu dev une app : c'est l'onboarding de l'utilisateur qui détermine la suite.
 
