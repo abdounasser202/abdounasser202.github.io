@@ -6,13 +6,27 @@ permalink: /about
 
 # Hello 👋
 
-Je suis Nasser, développeur et intégrateur ERP. Je suis intéressé par l'ERP [Odoo](https://odoo.com) et le développement Python en général.
+🧔🏽‍♂️ Je suis Nasser
 
-J'aime écrire pour partager mes expériences. À cet effet, mon premier blog remonte à 2010 🙃. 
-Je suis employé à temps plein et lorsque je suis libre, je travaille sur mon side project [Peef](https://peef.dev) 
-ou apprends quelque chose.
+🇨🇲 Du Cameroun
 
-Enfin, vous pouvez me retrouver sur :
+👨🏾‍💻 Développeur et intégrateur ERP
+
+🔥 Spécialisé Python backend et Odoo
+
+🦀 Intéressé par Rust
+
+📝 J'aime écrire pour partager mes expériences
+
+🙃 D'ailleurs, mon premier blog remonte à 2010
+
+💰 Je suis employé à temps plein 
+
+🧩 Et lorsque je suis libre, je travaille sur [Peef](https://peef.dev) 
+
+🛸 Ou apprends quelque chose.
+
+# 🔎 Retrouvez moi sur :
 
 - [Twitter](https://twitter.com/abdounasser202)
 - [LinkedIn](https://linkedin.com/in/abdounasser202)

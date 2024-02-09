@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=2">
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css">
+    <link rel="stylesheet" href="https://unpkg.com/concrete.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
     {% if page.description %}
     <meta name="description" content="{{ page.description }}">
     {% endif %}
-
     <!-- START OG:GRAPH -->
     {% if page.title %}
     <meta content="{{ page.title }}" property="og:title">
@@ -37,42 +39,23 @@
     <meta content="{{ site.url }}{{ page.url }}" property="og:url">
     {% endif %}
     <!-- END OG:GRAPH -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async
-        src="https://www.googletagmanager.com/gtag/js?id=G-6F6RS5CECC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-6F6RS5CECC');
-    </script>
 </head>
-
 <body>
-    <nav>
-        <a class="logo" href="/">Nasser</a>
-        <ul>
-            <li><a href="/about">Qui suis-je ?</a></li>
-            <li><a href="/projects">Mes projets</a></li>
-        </ul>
-    </nav>
-
     <main>
+        <header>
+            <h1>Nasser</h1>
+            <p>
+                <a href="/">Accueil</a> | 
+                <a href="/about">Qui suis-je ?</a> | 
+                <a href="/projects">Mes projets</a>
+            </p>
+        </header>
 
         {{ content }}
 
     </main>
-
     <footer>
-        <ul>
-            <li style="white-space:nowrap;">© Nasser 2023</li>
-            <li><a href="/credits">Credits</a></li>
-        </ul>
+        <p>&copy; 2023 Nasser. All rights reserved.</p>
     </footer>
-
-
 </body>
-
 </html>

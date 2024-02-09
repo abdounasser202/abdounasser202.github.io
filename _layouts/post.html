@@ -2,39 +2,13 @@
 layout: default
 ---
 
-<div class="article">
-    <header class="article__header">
-        <ul class="article__info">
-            <li>
-                <time class="published">{{ page.date | date_to_long_string }}</time>
-            </li>
-
-            <li>
-                {% for tag in page.tags %}
-                <span class="tag"> {{ tag }} </span>
-                {% endfor %}
-            </li>
-        </ul>
-        <h1>{{ page.title }}</h1>
-    </header>
-
-    <article class="article__content" data-progress-indicator="">
-        {{ content }}
-    </article>
-
-</div>
-
-<section class="announcement">
-    <div class="announcement__body">
-        <strong>📣 Sur Peef, trouvez le développeur freelance idéal pour votre
-            projet</strong>
-        <ul>
-            <li><a href="https://peef.dev/freelances">Trouvez un freelance</a>
-            </li>
-            <li><a href="https://peef.dev/workspace/project/create">Publiez une
-                    mission</a></li>
-            <li><a href="https://peef.dev/clusters">Découvrez nos
-                    communautés</a></li>
-        </ul>
+<article>
+    <div class="title-container">
+        {% for tag in page.tags %}
+        <span class="tag"> {{ tag }} </span>
+        {% endfor %}
+        <p>{{ page.date | date: "%d.%m.%Y" }}</p>
     </div>
-</section>
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+</article>
