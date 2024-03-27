@@ -4,7 +4,7 @@ title: Qui suis-je ?
 permalink: /about
 ---
 
-# Hello 👋
+Hello 👋
 
 🧔🏽‍♂️ Je suis Nasser
 
@@ -22,11 +22,11 @@ permalink: /about
 
 💰 Je suis employé à temps plein 
 
-🧩 Et lorsque je suis libre, je travaille sur [Peef](https://peef.dev) 
+🧩 Et lorsque je suis libre, je travaille sur [Peef](https://peef.dev) ou [autre chose](/projects)
 
 🛸 Ou apprends quelque chose.
 
-# 🔎 Retrouvez moi sur :
+🔎 Retrouve moi sur
 
 - [Twitter](https://twitter.com/abdounasser202)
 - [LinkedIn](https://linkedin.com/in/abdounasser202)
