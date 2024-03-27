@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=2">
-    <link rel="stylesheet" href="https://unpkg.com/normalize.css">
     <link rel="stylesheet" href="https://unpkg.com/concrete.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" type="image/svg+xml" href="/images/favicon.png" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet">
     <title>{{ page.title }}</title>
     {% if page.description %}
     <meta name="description" content="{{ page.description }}">
@@ -40,22 +43,34 @@
     {% endif %}
     <!-- END OG:GRAPH -->
 </head>
-<body>
-    <main>
-        <header>
-            <h1>Nasser</h1>
-            <p>
-                <a href="/">Accueil</a> | 
-                <a href="/about">Qui suis-je ?</a> | 
-                <a href="/projects">Mes projets</a>
-            </p>
-        </header>
+<body class="max-w-xl">
+    <main id="content">
+
+        <div class="light mb-5 flex flex-col">
+            <h1 class="font-bold text-5xl"><a href="/" class="light no-underline">Le Blog de Nasser 🤓</a></h1>
+            <nav class="mt-4 text-base">
+            
+                <a href="/" class="mr-3 lighter no-underline">Accueil</a>
+            
+                <a href="/about" class="mr-3 lighter no-underline">À propos de moi</a>
+            
+                <a href="/projects" class="mr-3 lighter no-underline">Mes projets</a>
+            
+                <a href="https://peef.dev" class="mr-3 lighter no-underline">Peef</a>
+            
+            </nav>
+        </div>
 
         {{ content }}
 
+        <p>
+            <a href="/">Voir tous les posts</a>
+        </p>
+
     </main>
-    <footer>
-        <p>&copy; 2023 Nasser. All rights reserved.</p>
+    <footer class="mt-5 text-base">
+        <p>&copy; 2023 Nasser. Tous droits réservés.</p>
+        <p>Design pris sur <a href="https://github.com/johnjago/johnjago.com">johnjago.com</a></p>
     </footer>
 </body>
 </html>
