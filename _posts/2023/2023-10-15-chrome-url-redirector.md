@@ -65,8 +65,8 @@ J'ai acquis des bases pour le développement d'extension chrome et j'ai résolu 
 💡 Désormais, lorsque j'ouvre Twitter, l'extension **URL Redirector** me redirige
 directement vers ma liste soigneusement élaborée !
 
-Actuellement, l'extension est en bêta et n'est pas encore sur le chrome webstore, mais il est disponible 
-sur GitHub à l'adresse [github.com/abdounasser202/url-redirector](https://github.com/abdounasser202/url-redirector)
+Actuellement, *url-redirector* est en bêta et n'est pas encore sur le chrome webstore, mais disponible 
+sur GitHub dans mon dépôt [just-for-fun](https://github.com/abdounasser202/just-for-fun) où je testes diverses idées.
 
 **🚀 Maintenant, place au contenu que j'adore et aux conversations qui me tiennent à cœur**
 
