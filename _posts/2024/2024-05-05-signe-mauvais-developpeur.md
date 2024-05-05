@@ -6,7 +6,7 @@ permalink: /signe-mauvais-developpeur
 author: Nasser
 date: 2024-05-05 15:17:00 +0200
 tags: dev
-image: screenshot.png
+image: site.png
 ---
 
 Nous sommes en avril 2024, et je me retrouve à réfléchir sur les deux dernières semaines de mars qui ont été particulièrement stressantes et éprouvantes dans tous les aspects de ma vie. Et ces moments stressants ont impacté la qualité de mon travail au boulot.
