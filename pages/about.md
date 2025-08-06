@@ -14,15 +14,13 @@ Hello 👋
 
 🔥 Spécialisé Python backend et Odoo
 
-🦀 Intéressé par Rust
-
 📝 J'aime écrire pour partager mes expériences
 
-🙃 D'ailleurs, mon premier blog remonte à 2010
+🙃 D'ailleurs, mon premier blog remonte à 2010 (Malheureusement je les ai tout supprimé, mais celui-ci, je le garde!)
 
-💰 Je suis employé à temps plein 
+💰 Je suis employé à temps plein en Allemagne
 
-🧩 Et lorsque je suis libre, je travaille sur [Peef](https://peef.dev) ou [autre chose](/projects)
+🧩 Et lorsque je suis libre, je travaille sur mes projets sur [Nasares](https://nasares.github.io)
 
 🛸 Ou apprends quelque chose.
 
