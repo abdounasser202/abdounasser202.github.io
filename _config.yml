@@ -1,0 +1,26 @@
+title: "Nasser 🤓"
+description: "Writing articles and building tools & services around Odoo and open-source."
+
+markdown: kramdown
+highlighter: rouge
+
+permalink: /:title/
+
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: "_pages"
+    values:
+      layout: default
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - .gitignore

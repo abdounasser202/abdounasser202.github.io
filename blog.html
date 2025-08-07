@@ -1,0 +1,17 @@
+---
+layout: default
+title: Blog
+description: All posts and thoughts from the blog
+permalink: /blog/
+---
+
+<div class="blog-list">
+    {% for post in site.posts %}
+    <div class="blog-post-item">
+        <span class="blog-date">{{ post.date | date: "%d %b, %Y" }}</span>
+        <span class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </span>
+    </div>
+    {% endfor %}
+</div>

@@ -2,19 +2,86 @@
 layout: default
 ---
 
-<section id="main">
-    <time class="light mb-1 inline-block">{{ page.date | date: "%d.%m.%Y" }}</time> &middot;
-    {% for tag in page.tags %}<span class="light"> {{ tag }} </span>{% endfor %} 
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title" style="font-size: 1.9rem;">{{ page.title }}</h1>
+        <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+            {% if page.author %} • <span>{{ page.author }}</span>{% endif %}
+            {% if page.reading_time %} • <span>{{ page.reading_time }} min read</span>{% endif %}
+        </div>
+    </header>
 
-    <h1 id="title" class="mb-5">{{ page.title }}</h1>
+    <div class="post-content">
+        {{ content }}
+    </div>
 
-    <div>
-        <article id="content">
-            {{ content }}
-        </article>
-	</div>
-</section>
+    {% if page.tags.size > 0 %}
+    <div class="post-tags" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+        <strong>Tags:</strong>
+        {% for tag in page.tags %}
+            <span style="background: #526980; padding: 0.25rem 0.5rem; border-radius: 4px; margin-right: 0.5rem; font-size: 0.9rem;">{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
 
-<p>
-    <a href="/">Voir tous les posts</a>
-</p>
+    <div class="post-navigation" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            {% if page.previous %}
+            <div style="text-align: left;">
+                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Previous post</div>
+                <a href="{{ page.previous.url | relative_url }}" style="color: #0066cc; text-decoration: none; font-weight: 500;">
+                    {{ page.previous.title }}
+                </a>
+            </div>
+            {% else %}
+            <div></div>
+            {% endif %}
+
+            {% if page.next %}
+            <div style="text-align: right;">
+                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Next post</div>
+                <a href="{{ page.next.url | relative_url }}" style="color: #0066cc; text-decoration: none; font-weight: 500;">
+                    {{ page.next.title }}
+                </a>
+            </div>
+            {% else %}
+            <div></div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="{{ '/blog/' | relative_url }}">← Back to all posts</a>
+    </div>
+</article>
+
+{% comment %}
+Add structured data for better SEO
+{% endcomment %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title | escape }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ page.author | default: site.author | default: site.title }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.logo | absolute_url }}"
+        }
+    },
+    "description": "{{ page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 | escape }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+    }
+}
+</script>
