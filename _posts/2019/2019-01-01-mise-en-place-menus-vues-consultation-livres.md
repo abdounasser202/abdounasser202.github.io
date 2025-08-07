@@ -10,7 +10,7 @@ tags: [dev, Odoo, Installation]
 
 Hello!
 
-Dans [l'article précédent](https://blog.nasser.cm/2018/12/oolibrary-developpement-du-module-de.html), nous avons mis en place les modèles du module sur lequel nous travaillons en ce moment: **la consultation des livres**. En gros, nous allons à ce niveau développer nos vues XML et y joindre des menus. Maintenant, allons tout droit au but:
+Dans [l'article précédent](../2018/2018-12-26-oolibrary-developpement-du-module-de.md), nous avons mis en place les modèles du module sur lequel nous travaillons en ce moment: **la consultation des livres**. En gros, nous allons à ce niveau développer nos vues XML et y joindre des menus. Maintenant, allons tout droit au but:
 
 On définit l’architecture globale de nos vues dans le fichier **oo_library/views/oo_consultation_view.xml**
 

@@ -16,7 +16,7 @@ tags: [ERP, Gestion de projet, Développement]
 
 Je suis un développeur. J'aime développer, c'est amusant et intellectuellement stimulant.
 
-Mais, en tant que PDG d'[Odoo](https://blog.nasser.cm/2018/09/odoo-cest-quoi-au-juste.html), je sais aussi que, pour les projets de mise en œuvre d'ERP, **les développements sur mesure doivent être évités autant que possible**.
+Mais, en tant que PDG d'[Odoo](../2018/2018-09-18-odoo-cest-quoi-au-juste.md), je sais aussi que, pour les projets de mise en œuvre d'ERP, **les développements sur mesure doivent être évités autant que possible**.
 
 Ce n'est pas aussi facile qu'il n'y paraît quand les clients pensent souvent qu'ils ont besoin de développements personnalisés. D'autre part, les sociétés de services d'implémentation sont heureuses de facturer des jours supplémentaires pour ces personnalisations. Mais je dois avertir les deux parties, **les développements sur mesure ne sont pas bons pour vous !**
 
@@ -26,7 +26,7 @@ Pour les clients, les développements sur mesure ajoutent des coûts et du temps
 
 Chaque développement peut sembler simple et abordable. Mais **la complexité d'un projet augmente avec le carré du nombre de personnalisations, pas linéairement**. Vous voulez probablement résoudre ce que vous n'aimiez pas dans votre logiciel précédent ; mais ne serait-il pas préférable de standardiser vos processus d'affaires et de mettre en œuvre le projet 2 fois plus rapidement et à moindre coût ?
 
-Pour les partenaires, les développements sur mesure ont généralement un coût élevé, pour une faible valeur client. Combien de fois avez-vous estimé à 10 jours le temps nécessaire pour développer une fonctionnalité ; [le client pense que c'est trop pour une fonctionnalité si basique](https://blog.nasser.cm/2019/06/comment-se-porte-la-vente-de-solutions.html) que vous ne chargez que 8 jours ; mais vous finissez par passer 12 jours. Oh, et quand nous découvrons des problèmes/changements plus tard parce que vous avez dû le faire rapidement, le client ne paiera pas pour la journée supplémentaire car c'est votre faute. Ce qui aurait dû être un service à 35 % de marge est maintenant une perte de service de 6 % !
+Pour les partenaires, les développements sur mesure ont généralement un coût élevé, pour une faible valeur client. Combien de fois avez-vous estimé à 10 jours le temps nécessaire pour développer une fonctionnalité ; [le client pense que c'est trop pour une fonctionnalité si basique](2019-08-06-vente-solutions-informatiques-cameroun.md) que vous ne chargez que 8 jours ; mais vous finissez par passer 12 jours. Oh, et quand nous découvrons des problèmes/changements plus tard parce que vous avez dû le faire rapidement, le client ne paiera pas pour la journée supplémentaire car c'est votre faute. Ce qui aurait dû être un service à 35 % de marge est maintenant une perte de service de 6 % !
 
 Pour croître, il est plus facile de se concentrer sur des services de valeur ayant de meilleures marges et de réduire le risque d'heures non facturables. Ces services comprennent la gestion de projet, l'analyse d'affaires, la personnalisation sans développement, la gestion du changement et la formation.
 
@@ -134,7 +134,7 @@ Bien sûr, vous ne pouvez pas passer d'un jour à l'autre ; changer l'état d'es
 
 ## Ma recommandation serait de :
 
-- [Travaillez sur votre méthodologie](https://blog.nasser.cm/2018/11/les-bonnes-pratiques-suivre-lorsquon.html) d'implémentation (commencez par la nôtre - c'est-à-dire Odoo - si vous n'en avez pas).
+- [Travaillez sur votre méthodologie](../2018/2018-11-20-les-bonnes-pratiques-suivre-lorsquon.md) d'implémentation (commencez par la nôtre - c'est-à-dire Odoo - si vous n'en avez pas).
 - Conservez votre équipe, mais recrutez progressivement quelques analystes commerciaux ou chefs de projet supplémentaires qui n'ont pas de profil développeur.
 
 ## Choses à garder à l'esprit :

@@ -60,4 +60,4 @@ Aujourd'hui, je suis un développeur et fier de l'être malgré les petits souci
 
 ## Dans le prochain article
 
-[Je vous dis comment avoir un CV de développeur impeccable!](https://blog.nasser.cm/2020/05/partie-23-comment-se-trouver-un-emploi.html)
+[Je vous dis comment avoir un CV de développeur impeccable!](../2020/2020-05-10-trouver-emploi-informatique-partie-2.md)

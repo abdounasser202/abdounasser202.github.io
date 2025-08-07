@@ -10,11 +10,10 @@ tags: [Odoo, Développement, Gestion de bibliothèque]
 
 Bonjour et bienvenue !
 
-Dernièrement, je vous présentais comment implémenter les fonctionnalités de consultation des livres. En gros, il s'agissait d'écrire un modèle qui enregistre des livres et sur lequel on peut faire des éditions et des suppressions. [Vous pouvez consulter l'article en question ici !](https://blog.nasser.cm/2019/01/mise-en-place-des-menus-et-des-vues-du.html)
+Dernièrement, je vous présentais comment implémenter les fonctionnalités de consultation des livres. En gros, il s'agissait d'écrire un modèle qui enregistre des livres et sur lequel on peut faire des éditions et des suppressions. [Vous pouvez consulter l'article en question ici !](2019-01-01-mise-en-place-menus-vues-consultation-livres.md)
 
-**Si vous êtes débutant et venez tout juste de nous rejoindre, [je vous invite plutôt à commencer ici !](https://blog.nasser.cm/p/apprendre-odoo.html)**
 
-OK ! Aujourd'hui, nous allons **commencer la mise en place des fonctions d'acquisition des livres**. Pour vous permettre de comprendre, mettez-vous à la place d'un libraire qui, après avoir enregistré les livres qu'il va vendre dans sa bibliothèque, décide maintenant de les acquérir. Pour ce faire, il doit enregistrer ses produits ou articles (livres), puis ses fournisseurs. Ensuite, il devra passer par un bon de commande pour passer sa commande auprès du fournisseur avant de les recevoir dans son stock.
+Aujourd'hui, nous allons **commencer la mise en place des fonctions d'acquisition des livres**. Pour vous permettre de comprendre, mettez-vous à la place d'un libraire qui, après avoir enregistré les livres qu'il va vendre dans sa bibliothèque, décide maintenant de les acquérir. Pour ce faire, il doit enregistrer ses produits ou articles (livres), puis ses fournisseurs. Ensuite, il devra passer par un bon de commande pour passer sa commande auprès du fournisseur avant de les recevoir dans son stock.
 
 Maintenant, et si je vous disais qu'actuellement, Odoo me permet de faire cette opération, sans aucune difficulté, comme ça de manière native ? Et oui ! c'est vrai. Rien qu'en installant les modules Achats (**purchase**) et Inventaire (**stock**), je peux le faire.
 

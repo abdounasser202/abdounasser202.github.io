@@ -12,9 +12,7 @@ Hello!
 
 La semaine dernière, je vous montrais comment gérer les dépendances, utiliser les variantes de produits et établir des liens entre modèles.
 
-Pour rappel, cet article fait partie de la formation gratuite **Odoo Training** que vous pouvez retrouver [ici](https://blog.nasser.cm/p/apprendre-odoo.html). Si vous êtes débutants, commencez par là!
-
-Maintenant que le décor est planté, nous allons entrer dans le vif du sujet: gérer le processus d'achat et faire entrer nos livres dans le stock! Je vous laisse un petit secret: j'ai comme l'impression que ce tutoriel ne va nécessiter aucune écriture de code :)
+Nous allons entrer dans le vif du sujet: gérer le processus d'achat et faire entrer nos livres dans le stock! Je vous laisse un petit secret: j'ai comme l'impression que ce tutoriel ne va nécessiter aucune écriture de code :)
 
 Commencez par démarrer votre instance Odoo et assurez-vous d'avoir le module **oo_library**. Sinon, il est disponible à [cette adresse](https://apps.odoo.com/apps/browse?repo_maintainer_id=140338).
 
