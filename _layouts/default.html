@@ -13,9 +13,8 @@
         <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
         <nav class="nav">
             <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
-            <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}class="active"{% endif %}>Blog</a>
-            <a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>Projects</a>
             <a href="{{ '/now/' | relative_url }}" {% if page.url contains '/now' %}class="active"{% endif %}>Now</a>
+            <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}class="active"{% endif %}>Blog</a>
         </nav>
     </div>
 
