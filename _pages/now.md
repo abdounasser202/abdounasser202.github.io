@@ -20,5 +20,6 @@ Hello 👋
 
 🔎 You can find me on
 
-- [Twitter](https://twitter.com/abdounasser202)
 - [LinkedIn](https://linkedin.com/in/abdounasser202)
+- [Bluesky](https://bsky.app/profile/abdounasser202.bsky.social)
+- [X](https://x.com/abdounasser202)
