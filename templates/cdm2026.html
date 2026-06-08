@@ -2639,6 +2639,10 @@
                 color: #555;
                 margin: 0.2em 0 0;
             }
+            .filter-count.active {
+                color: #7a5c00;
+                font-weight: bold;
+            }
             .choc-badge {
                 display: inline-block;
                 background: #fff4d6;
@@ -2705,7 +2709,7 @@
                     <input type="checkbox" id="f-mes-equipes" checked>
                     <strong>Mes équipes</strong>
                 </label>
-                <span style="font-size:0.82em;color:#555">— phase de groupes uniquement · <a href="#" id="toggle-all-matches" style="color:#555">voir les 104 matchs</a></span>
+                <span style="font-size:0.82em;color:#555">— phase de groupes uniquement · <a href="#" id="toggle-all-matches">voir les 104 matchs</a></span>
             </div>
             <div id="chips" class="chips-row">
                 <span class="chip active" data-team="Morocco">🇲🇦 Maroc</span>
@@ -2728,10 +2732,10 @@
             <div class="filter-row">
                 <label>
                     <input type="checkbox" id="f-horaire">
-                    🕐 Matchs aux heures raisonnables (13h–minuit, heure de Paris)
+                    🕐 Matchs aux heures raisonnables (13h–minuit, heure de Paris) <span style="color:#d9af2f;font-size:0.88em">(recommandé)</span>
                 </label>
             </div>
-            <p class="filter-count" id="filter-count">104 matchs affichés sur 104</p>
+            <p class="filter-count" id="filter-count">104 matchs affichés sur 104 · <a href="#" id="reset-filters" style="display:none;color:#d9af2f">Réinitialiser les filtres</a></p>
         </div>
 
         <div class="search-block">
@@ -6124,10 +6128,15 @@
                 });
 
                 const fc = document.getElementById("filter-count");
-                if (fc)
-                    fc.textContent =
+                if (fc) {
+                    const reset = document.getElementById("reset-filters");
+                    const filtered = visible < 104;
+                    fc.className = "filter-count" + (filtered ? " active" : "");
+                    fc.firstChild.textContent =
                         visible + " match" + (visible > 1 ? "s" : "") +
-                        " affiché" + (visible > 1 ? "s" : "") + " sur 104";
+                        " affiché" + (visible > 1 ? "s" : "") + " sur 104 · ";
+                    if (reset) reset.style.display = filtered ? "" : "none";
+                }
 
                 const meta = document.getElementById("meta");
                 if (q) {
@@ -6241,6 +6250,18 @@
                 const cb = document.getElementById("f-mes-equipes");
                 cb.checked = !cb.checked;
                 document.getElementById("chips").style.display = cb.checked ? "" : "none";
+                applyFilters();
+            });
+
+            document.getElementById("reset-filters").addEventListener("click", (e) => {
+                e.preventDefault();
+                document.getElementById("f-mes-equipes").checked = true;
+                document.getElementById("f-chocs").checked = false;
+                document.getElementById("f-horaire").checked = false;
+                document.getElementById("chips").style.display = "";
+                document.querySelectorAll("#chips .chip").forEach((c) => c.classList.add("active"));
+                searchQuery = "";
+                document.getElementById("q").value = "";
                 applyFilters();
             });
 
