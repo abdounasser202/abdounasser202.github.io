@@ -1,6 +1,4 @@
-from pydoc import render_doc
-
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
