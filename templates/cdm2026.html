@@ -4,12 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
-            Calendrier Coupe du Monde 2026 - 104 matchs, heure de Paris, scores
-            live
+            Calendrier CDM 2026 — France, Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire, Espagne, Argentine, Angleterre, Portugal — heure de Paris, scores live
         </title>
         <meta
             name="description"
-            content="Calendrier complet de la Coupe du Monde de football 2026 (USA, Canada, Mexique) : 48 équipes, 104 matchs, horaires en heure de Paris, scores mis à jour automatiquement. Ajout en un clic à Google Calendar, Apple Calendar et Outlook."
+            content="Le calendrier CDM 2026 pour les supporters de France, Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire, Espagne, Argentine, Angleterre, Portugal — heure de Paris, scores live, filtres horaire raisonnable et matchs de chocs. Ajout en un clic à Google Calendar, Apple Calendar et Outlook."
         />
         <meta
             name="keywords"
@@ -42,7 +41,7 @@
         />
         <meta
             property="og:description"
-            content="Tous les matchs de la CDM 2026 en heure de Paris. Scores live. Ajout en un clic à Google Calendar, Apple Calendar, Outlook."
+            content="Calendrier CDM 2026 pour vos équipes (France, Maroc, Sénégal, Algérie…) — heure de Paris, scores live, filtres chocs et horaire raisonnable."
         />
         <meta property="og:url" content="https://nasser.peef.dev/" />
         <meta property="og:site_name" content="Calendrier CDM 2026" />
@@ -2581,11 +2580,82 @@
                     text-align: center;
                 }
             }
+
+            /* ---- Filter bar ---- */
+            .filter-bar {
+                position: sticky;
+                top: 0;
+                background: #fff;
+                border-bottom: 2px solid #f3c742;
+                padding: 0.55em 0 0.45em;
+                margin: 0.8em 0;
+                z-index: 10;
+            }
+            .filter-row {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 0.35em;
+                margin: 0.2em 0;
+                font-size: 0.9em;
+            }
+            .filter-row label {
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.3em;
+            }
+            .filter-row input[type="checkbox"] {
+                accent-color: #d9af2f;
+                width: 1em;
+                height: 1em;
+                cursor: pointer;
+            }
+            .chips-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3em;
+                margin: 0.25em 0;
+                padding-left: 1.4em;
+            }
+            .chip {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.15em 0.5em;
+                border: 1px solid #ccc;
+                background: #f5f5f5;
+                cursor: pointer;
+                font-size: 0.82em;
+                user-select: none;
+                transition: background 0.1s, border-color 0.1s;
+            }
+            .chip.active {
+                background: #fff4d6;
+                border-color: #d9af2f;
+                font-weight: bold;
+            }
+            .filter-count {
+                font-size: 0.82em;
+                color: #555;
+                margin: 0.2em 0 0;
+            }
+            .choc-badge {
+                display: inline-block;
+                background: #fff4d6;
+                border: 1px solid #d9af2f;
+                color: #7a5c00;
+                font-size: 0.75em;
+                font-weight: bold;
+                padding: 0.05em 0.4em;
+                margin-left: 0.4em;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
         </style>
     </head>
     <body>
         <header>
-            <h1>Calendrier Football - Coupe du Monde 2026</h1>
+            <h1>Calendrier CDM 2026 — Vos équipes, heure de Paris</h1>
             <p class="intro">
                 Tous les matchs de la 23e Coupe du Monde de football, organisée
                 aux États-Unis, au Canada et au Mexique du 11 juin au 19 juillet
@@ -2597,7 +2667,7 @@
 
         <aside class="whatsapp">
             <p>
-                📲 Retrouvez toutes les coulisses sur WhatsApp.
+                📲 Tous les pronostics et toutes les coulisses sur WhatsApp.
                 <a
                     class="join-btn"
                     href="https://whatsapp.com/channel/0029VbCiP4X0lwgki6gzib41"
@@ -2627,6 +2697,41 @@
             <a href="#" id="dl-all">📥 Tout télécharger (.ics)</a> - Ajoute les
             104 matchs à ton calendrier (Google Calendar, Apple Calendar,
             Outlook…) en un seul clic.
+        </div>
+
+        <div id="filter-bar" class="filter-bar">
+            <div class="filter-row">
+                <label>
+                    <input type="checkbox" id="f-mes-equipes" checked>
+                    <strong>Mes équipes</strong>
+                </label>
+                <span style="font-size:0.82em;color:#555">— phase de groupes uniquement · <a href="#" id="toggle-all-matches" style="color:#555">voir les 104 matchs</a></span>
+            </div>
+            <div id="chips" class="chips-row">
+                <span class="chip active" data-team="Morocco">🇲🇦 Maroc</span>
+                <span class="chip active" data-team="Senegal">🇸🇳 Sénégal</span>
+                <span class="chip active" data-team="Algeria">🇩🇿 Algérie</span>
+                <span class="chip active" data-team="Egypt">🇪🇬 Égypte</span>
+                <span class="chip active" data-team="Ivory Coast">🇨🇮 Côte d'Ivoire</span>
+                <span class="chip active" data-team="France">🇫🇷 France</span>
+                <span class="chip active" data-team="Spain">🇪🇸 Espagne</span>
+                <span class="chip active" data-team="Argentina">🇦🇷 Argentine</span>
+                <span class="chip active" data-team="England">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Angleterre</span>
+                <span class="chip active" data-team="Portugal">🇵🇹 Portugal</span>
+            </div>
+            <div class="filter-row">
+                <label>
+                    <input type="checkbox" id="f-chocs">
+                    ⚡ Uniquement les matchs de chocs (les deux équipes dans ma liste)
+                </label>
+            </div>
+            <div class="filter-row">
+                <label>
+                    <input type="checkbox" id="f-horaire">
+                    🕐 Matchs aux heures raisonnables (13h–minuit, heure de Paris)
+                </label>
+            </div>
+            <p class="filter-count" id="filter-count">104 matchs affichés sur 104</p>
         </div>
 
         <div class="search-block">
@@ -5919,7 +6024,7 @@
                         : '<span class="score-status">Aucun match terminé pour l\'instant - les scores apparaîtront ici automatiquement.</span>';
             }
 
-            // ---- Filtre de recherche ----
+            // ---- Filtre de recherche + filtres équipes ----
             function escHtml(s) {
                 return s.replace(
                     /[&<>"']/g,
@@ -5934,15 +6039,82 @@
                 );
             }
 
-            function applyFilter(q) {
-                q = (q || "").trim().toLowerCase();
+            const CURATED = new Set([
+                "Morocco", "Senegal", "Algeria", "Egypt", "Ivory Coast",
+                "France", "Spain", "Argentina", "England", "Portugal"
+            ]);
+
+            function isGroupStage(li) {
+                return (li.dataset.section || "").startsWith("Group");
+            }
+
+            function isReasonableTime(li) {
+                const s = li.dataset.start;
+                if (!s) return true;
+                const h = parseInt(s.substring(9, 11), 10);
+                const m = parseInt(s.substring(11, 13), 10);
+                // Paris is UTC+2 (CEST during tournament)
+                const parisMinutes = (h * 60 + m + 120) % 1440;
+                return parisMinutes >= 780 && parisMinutes < 1440;
+            }
+
+            function getSelectedChips() {
+                const active = document.querySelectorAll("#chips .chip.active");
+                if (active.length === 0) return CURATED;
+                const s = new Set();
+                active.forEach((c) => s.add(c.dataset.team));
+                return s;
+            }
+
+            function addChocBadges() {
+                document.querySelectorAll("li[data-mid]").forEach((li) => {
+                    if (!CURATED.has(li.dataset.t1) || !CURATED.has(li.dataset.t2)) return;
+                    const existing = li.querySelector(".choc-badge");
+                    if (existing) return;
+                    const badge = document.createElement("span");
+                    badge.className = "choc-badge";
+                    badge.textContent = "⚡ CHOC";
+                    const teams = li.querySelector(".teams");
+                    if (teams) teams.after(badge);
+                    else li.prepend(badge);
+                });
+            }
+
+            let searchQuery = "";
+
+            function applyFilters() {
+                const fMesEquipes = document.getElementById("f-mes-equipes").checked;
+                const fChocs = document.getElementById("f-chocs").checked;
+                const fHoraire = document.getElementById("f-horaire").checked;
+                const selectedTeams = fMesEquipes ? getSelectedChips() : null;
+                const q = searchQuery.trim().toLowerCase();
+
                 let visible = 0;
                 document.querySelectorAll("li[data-mid]").forEach((li) => {
-                    const txt = li.textContent.toLowerCase();
-                    const ok = !q || txt.includes(q);
-                    li.style.display = ok ? "" : "none";
-                    if (ok) visible++;
+                    let show = true;
+
+                    if (fMesEquipes && isGroupStage(li)) {
+                        const t1 = li.dataset.t1;
+                        const t2 = li.dataset.t2;
+                        show = show && (selectedTeams.has(t1) || selectedTeams.has(t2));
+                    }
+
+                    if (fChocs) {
+                        show = show && CURATED.has(li.dataset.t1) && CURATED.has(li.dataset.t2);
+                    }
+
+                    if (fHoraire) {
+                        show = show && isReasonableTime(li);
+                    }
+
+                    if (q) {
+                        show = show && li.textContent.toLowerCase().includes(q);
+                    }
+
+                    li.style.display = show ? "" : "none";
+                    if (show) visible++;
                 });
+
                 document.querySelectorAll("main section.grp").forEach((sec) => {
                     const any =
                         sec.querySelectorAll(
@@ -5950,25 +6122,33 @@
                         ).length > 0;
                     sec.style.display = any ? "" : "none";
                 });
+
+                const fc = document.getElementById("filter-count");
+                if (fc)
+                    fc.textContent =
+                        visible + " match" + (visible > 1 ? "s" : "") +
+                        " affiché" + (visible > 1 ? "s" : "") + " sur 104";
+
                 const meta = document.getElementById("meta");
                 if (q) {
                     meta.innerHTML =
                         visible === 0
                             ? "Aucun match ne correspond à « " +
                               escHtml(q) +
-                              ' ». <a href="#" class="clear-link">Tout afficher</a>.'
+                              ' ». <a href="#" class="clear-link">Effacer</a>.'
                             : visible +
                               " match" +
                               (visible > 1 ? "s" : "") +
                               " affiché" +
                               (visible > 1 ? "s" : "") +
-                              ' · <a href="#" class="clear-link">Tout afficher</a>';
+                              ' · <a href="#" class="clear-link">Effacer</a>';
                     const cl = meta.querySelector(".clear-link");
                     if (cl)
                         cl.addEventListener("click", function (e) {
                             e.preventDefault();
                             document.getElementById("q").value = "";
-                            applyFilter("");
+                            searchQuery = "";
+                            applyFilters();
                         });
                 } else {
                     meta.textContent = "104 matchs au total";
@@ -5977,7 +6157,10 @@
 
             document
                 .getElementById("q")
-                .addEventListener("input", (e) => applyFilter(e.target.value));
+                .addEventListener("input", (e) => {
+                    searchQuery = e.target.value;
+                    applyFilters();
+                });
 
             // ---- Export .ics global ----
             function buildIcs() {
@@ -6032,6 +6215,36 @@
 
             // ---- Init ----
             loadScores().then(applyScores);
+
+            addChocBadges();
+
+            document.querySelectorAll("#chips .chip").forEach((chip) => {
+                chip.addEventListener("click", () => {
+                    chip.classList.toggle("active");
+                    applyFilters();
+                });
+            });
+
+            ["f-mes-equipes", "f-chocs", "f-horaire"].forEach((id) => {
+                document.getElementById(id).addEventListener("change", () => {
+                    const chipsRow = document.getElementById("chips");
+                    if (id === "f-mes-equipes") {
+                        chipsRow.style.display =
+                            document.getElementById("f-mes-equipes").checked ? "" : "none";
+                    }
+                    applyFilters();
+                });
+            });
+
+            document.getElementById("toggle-all-matches").addEventListener("click", (e) => {
+                e.preventDefault();
+                const cb = document.getElementById("f-mes-equipes");
+                cb.checked = !cb.checked;
+                document.getElementById("chips").style.display = cb.checked ? "" : "none";
+                applyFilters();
+            });
+
+            applyFilters();
         </script>
     </body>
 </html>

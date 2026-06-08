@@ -12,3 +12,5 @@ __pycache__
 vendor/
 Gemfile
 Gemfile.lock
+.env
+docker-compose.override.yml
