@@ -1,3 +1,5 @@
+from pydoc import render_doc
+
 from flask import Flask
 
 app = Flask(__name__)
@@ -5,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Test app OK"
+    return render_template("cdm2026.html")
 
 
 @app.route("/health")
