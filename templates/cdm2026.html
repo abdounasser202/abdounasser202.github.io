@@ -1323,12 +1323,12 @@
         <div id="filter-bar" class="filter-bar">
             <div class="filter-row">
                 <label>
-                    <input type="checkbox" id="f-mes-equipes" checked>
+                    <input type="checkbox" id="f-mes-equipes">
                     <strong>Mes équipes</strong>
                 </label>
                 <span style="font-size:0.82em;color:#555">— phase de groupes · <a href="#" id="toggle-all-matches">voir les 60 matchs</a></span>
             </div>
-            <div id="chips" class="chips-row">
+            <div id="chips" class="chips-row" style="display:none">
                 <span class="chip" data-team="Morocco">🇲🇦 Maroc</span>
                 <span class="chip" data-team="Senegal">🇸🇳 Sénégal</span>
                 <span class="chip" data-team="Algeria">🇩🇿 Algérie</span>
@@ -1349,7 +1349,7 @@
             </div>
             <div class="filter-row">
                 <label>
-                    <input type="checkbox" id="f-chocs">
+                    <input type="checkbox" id="f-chocs" checked>
                     ⚡ Matchs de chocs <span style="font-size:0.82em;color:#555">(les 8 affiches du tournoi)</span>
                 </label>
             </div>
@@ -3583,11 +3583,11 @@
 
             document.getElementById("reset-filters").addEventListener("click", (e) => {
                 e.preventDefault();
-                document.getElementById("f-mes-equipes").checked = true;
-                document.getElementById("f-chocs").checked = false;
+                document.getElementById("f-mes-equipes").checked = false;
+                document.getElementById("f-chocs").checked = true;
                 document.getElementById("f-horaire").checked = false;
                 document.getElementById("f-eliminatoires").checked = false;
-                document.getElementById("chips").style.display = "";
+                document.getElementById("chips").style.display = "none";
                 document.querySelectorAll("#chips .chip").forEach((c) => c.classList.remove("active"));
                 searchQuery = "";
                 document.getElementById("q").value = "";
