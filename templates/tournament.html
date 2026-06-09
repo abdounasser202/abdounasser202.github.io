@@ -1,0 +1,316 @@
+{% extends "base.html" %} {% block head %}
+<title>
+  Calendrier {{ t.short_name }} - Maroc, Sénégal, Algérie, Égypte, Côte
+  d'Ivoire, France, Espagne, Argentine, Angleterre, Portugal - heure de Paris,
+  scores live
+</title>
+<meta
+  name="description"
+  content="Calendrier {{ t.short_name }} pour les 5 meilleures équipes africaines (Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire) et les 5 meilleures FIFA (France, Espagne, Argentine, Angleterre, Portugal) - heure de Paris, scores live, export Google Calendar / Apple Calendar."
+/>
+<meta
+  name="keywords"
+  content="Coupe du Monde 2026, CDM 2026, FIFA World Cup 2026, calendrier, heure de Paris, scores live, Google Calendar, Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire, France, Espagne, Argentine, Angleterre, Portugal"
+/>
+<meta
+  name="robots"
+  content="index, follow, max-snippet:-1, max-image-preview:large"
+/>
+<meta name="author" content="cdm2026" />
+<meta name="theme-color" content="#fff4d6" />
+<link rel="canonical" href="https://nasser.peef.dev/" />
+<link rel="icon" type="image/x-icon" href="/static/favicon.png" sizes="any" />
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_FR" />
+<meta
+  name="apple-mobile-web-app-title"
+  content="Calendrier {{ t.short_name }}"
+/>
+<meta property="og:image" content="/static/image.png" />
+<meta property="og:image:url" content="/static/image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta
+  property="og:title"
+  content="Calendrier {{ t.short_name }} - Afrique + top FIFA, heure de Paris"
+/>
+<meta
+  property="og:description"
+  content="Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire, France, Espagne, Argentine, Angleterre, Portugal - {{ total_matches }} matchs en heure de Paris, scores live, export calendrier."
+/>
+<meta property="og:url" content="https://nasser.peef.dev/" />
+<meta property="og:site_name" content="Calendrier {{ t.short_name }}" />
+<meta name="twitter:card" content="summary" />
+<meta
+  name="twitter:title"
+  content="Calendrier {{ t.short_name }} - Afrique + top FIFA, heure de Paris"
+/>
+<meta
+  name="twitter:description"
+  content="{{ total_matches }} matchs : Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire, France, Espagne, Argentine, Angleterre, Portugal - scores live."
+/>
+
+<script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "name": "Coupe du Monde de la FIFA 2026",
+      "alternateName": [
+          "FIFA World Cup 2026",
+          "CDM 2026"
+      ],
+      "description": "23e édition de la Coupe du Monde de football, organisée aux États-Unis, au Canada et au Mexique du 11 juin au 19 juillet 2026, avec 48 équipes et 104 matchs.",
+      "sport": "Association football",
+      "startDate": "2026-06-11T19:00:00Z",
+      "endDate": "2026-07-19T22:00:00Z",
+      "location": {
+          "@type": "Place",
+          "name": "États-Unis, Canada, Mexique",
+          "address": {
+              "@type": "PostalAddress",
+              "addressCountry": ["US", "CA", "MX"]
+          }
+      },
+      "organizer": {
+          "@type": "SportsOrganization",
+          "name": "FIFA",
+          "url": "https://www.fifa.com/"
+      },
+      "subEvent": [
+          {% for m in by_section.values() | map(attribute='matches') | sum(start=[]) %}
+          {
+              "@type": "SportsEvent",
+              "name": "{{ m.team1.name_fr }} – {{ m.team2.name_fr }}",
+              "description": "{{ t.name }} - {{ by_section[m.section].meta.label }}",
+              "startDate": "{{ m.kickoff_utc }}",
+              "endDate": "{{ m.kickoff_utc_end }}",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+              "sport": "Association football",
+              "location": {"@type": "Place", "name": "{{ m.venue }}"},
+              "homeTeam": {"@type": "SportsTeam", "name": "{{ m.team1.name_fr }}"},
+              "awayTeam": {"@type": "SportsTeam", "name": "{{ m.team2.name_fr }}"},
+              "competitor": [
+                  {"@type": "SportsTeam", "name": "{{ m.team1.name_fr }}"},
+                  {"@type": "SportsTeam", "name": "{{ m.team2.name_fr }}"}
+              ]
+          }{% if not loop.last %},{% endif %}
+          {% endfor %}
+      ]
+  }
+</script>
+{% endblock %} {% block body %}
+<header>
+  <h1>
+    Calendrier {{ t.short_name }} - Afrique &amp; top FIFA, heure de Paris
+  </h1>
+  <p class="intro">
+    Les {{ total_matches }} matchs des
+    <strong>5 meilleures équipes africaines</strong>
+    (Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire) et des
+    <strong>5 meilleures FIFA</strong> (France, Espagne, Argentine, Angleterre,
+    Portugal) - heure de Paris, scores live, phases éliminatoires incluses.
+  </p>
+</header>
+
+<div class="ics-block">
+  <p>
+    🗓️
+    <a href="webcal://{{ request.host }}/{{ t.id }}/calendar.ics"
+      >Ajouter à mon calendrier</a
+    >
+    - fonctionne avec Google Calendar, Apple Calendar et Outlook. Horaires et
+    scores mis à jour automatiquement.
+  </p>
+</div>
+
+<div id="filter-bar" class="filter-bar">
+  <div class="filter-row">
+    <label>
+      <input type="checkbox" id="f-chocs" checked />
+      ⚡ <strong>Matchs de chocs</strong>
+      <span style="font-size: 0.82em; color: #555"
+        >(les 8 affiches du tournoi)</span
+      >
+    </label>
+  </div>
+  <div class="filter-row">
+    <label>
+      <input type="checkbox" id="f-mes-equipes" />
+      <strong>Mes équipes</strong>
+    </label>
+    <span style="font-size: 0.82em; color: #555"
+      >— phase de groupes ·
+      <a href="#" id="toggle-all-matches"
+        >voir les {{ total_matches }} matchs</a
+      ></span
+    >
+  </div>
+  <div id="chips" class="chips-row" style="display: none">
+    {% for team in t.fav_teams %}
+    <button
+      class="chip"
+      type="button"
+      data-team="{{ team.name_en }}"
+      aria-pressed="false"
+    >
+      {{ team.flag }} {{ team.name_fr }}
+    </button>
+    {% endfor %}
+  </div>
+  <div class="filter-row">
+    <label>
+      <input type="checkbox" id="f-eliminatoires" />
+      <strong>Phases éliminatoires</strong>
+      <span style="font-size: 0.82em; color: #555"
+        >— seizièmes, huitièmes, quarts, demies, finale</span
+      >
+    </label>
+  </div>
+  <div class="filter-row">
+    <label>
+      <input type="checkbox" id="f-horaire" />
+      🕐 Matchs aux heures raisonnables (13h–minuit, heure de Paris)
+      <span style="color: #d9af2f; font-size: 0.88em">(recommandé)</span>
+    </label>
+  </div>
+  <p class="filter-count" id="filter-count">
+    {{ total_matches }} matchs affichés sur {{ total_matches }} ·
+    <a href="#" id="reset-filters" style="display: none; color: #d9af2f"
+      >Réinitialiser les filtres</a
+    >
+  </p>
+</div>
+
+<p class="next-up" id="next-up" hidden></p>
+
+<div class="search-block">
+  <input
+    type="search"
+    id="q"
+    placeholder="Rechercher (équipe, ville, stade, groupe, score…)"
+    autocomplete="off"
+    spellcheck="false"
+    aria-label="Recherche"
+  />
+</div>
+<p class="search-meta" id="meta">{{ total_matches }} matchs au total</p>
+<p class="search-meta" id="score-status">Chargement des scores…</p>
+
+<main>
+  <div id="empty-state" class="empty-state" style="display: none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="#7a5c00"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="32" cy="32" r="26" fill="#fff4d6" />
+      <polygon
+        points="32,22 41,28.5 37.6,39 26.4,39 23,28.5"
+        fill="#7a5c00"
+        stroke="#7a5c00"
+      />
+      <line x1="32" y1="22" x2="32" y2="8" />
+      <line x1="41" y1="28.5" x2="55" y2="24" />
+      <line x1="37.6" y1="39" x2="46" y2="52" />
+      <line x1="26.4" y1="39" x2="18" y2="52" />
+      <line x1="23" y1="28.5" x2="9" y2="24" />
+    </svg>
+    <p>
+      Sélectionne une équipe favorite, coche « Matchs de chocs » ou « Phases
+      éliminatoires » pour afficher des matchs.
+    </p>
+  </div>
+  {% for s in sections %}
+  <section class="grp">
+    <h2>
+      {{ s.label }}{% if by_section[s.id].teams_fr %}
+      <span class="grp-teams"
+        >— {{ by_section[s.id].teams_fr | join(", ") }}</span
+      >{% endif %}
+    </h2>
+    <ul>
+      {% for m in by_section[s.id].matches %}
+      <li
+        data-mid="{{ m.id }}"
+        data-t1="{{ m.team1.name_en }}"
+        data-t2="{{ m.team2.name_en }}"
+        data-date="{{ m.local_dt.strftime('%Y-%m-%d') }}"
+        data-section="{{ 'Group ' + s.label.split(' ')[1] if s.kind == 'group' else s.label }}"
+        data-start="{{ m.kickoff_utc | dtformat_ics }}"
+        data-end="{{ m.kickoff_utc_end | dtformat_ics }}"
+        data-venue="{{ m.venue }}"
+        data-title="⚽ {{ m.team1.name_fr }} – {{ m.team2.name_fr }} | {{ t.short_name }}"
+        data-desc="{{ t.name }} - {{ s.label }}"
+        {%
+        if
+        m.is_choc
+        %}data-choc="1"
+        {%
+        endif
+        %}
+        data-status="{{ m.status }}"
+      >
+        <time datetime="{{ m.kickoff_utc }}" class="date"
+          >{{ m.local_dt | format_date_fr }}</time
+        >
+        {% if m.is_night %}<span class="night">(nuit)</span>{% endif %}
+        <span class="teams">{{ m.team1.name_fr }} – {{ m.team2.name_fr }}</span>
+        <span class="venue">{{ m.venue }}</span>
+        <span class="score-line"
+          >Score : <span class="score-val empty">—</span></span
+        >
+        <a
+          class="add"
+          href="{{ m | gcal_url(t) }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="Ajouter {{ m.team1.name_fr }} – {{ m.team2.name_fr }} à Google Calendar"
+          >[+ Google Calendar]</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</main>
+
+<aside class="whatsapp">
+  <p>
+    📲 Tous les pronostics et toutes les coulisses sur WhatsApp.
+    <a
+      class="join-btn"
+      href="https://whatsapp.com/channel/0029VbCiP4X0lwgki6gzib41"
+      target="_blank"
+      rel="noopener"
+      >Rejoindre la Chaîne WhatsApp →</a
+    >
+  </p>
+</aside>
+
+<footer class="note">
+  <p>
+    Site indépendant - pas de publicité, pas de paris sportifs. Statistiques de
+    visite via Google Analytics (sans cookie de tracking, données anonymisées).
+    Construit avec
+    <a
+      href="https://github.com/openfootball/worldcup.json"
+      target="_blank"
+      rel="noopener"
+      >openfootball/worldcup.json</a
+    >
+    (domaine public). Horaires d'origine : FIFA, susceptibles d'être modifiés.
+  </p>
+  <p>
+    Le clic sur <em>[+ Google Calendar]</em> ouvre Google Calendar avec
+    l'événement pré-rempli ; pour Apple Calendar / Outlook, utilise le lien «
+    Ajouter à mon calendrier » en haut de page.
+  </p>
+</footer>
+{% endblock %}

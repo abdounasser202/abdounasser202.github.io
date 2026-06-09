@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        {% if not debug %}
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNFQ18BNRN"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MNFQ18BNRN', {
+            anonymize_ip: true
+        });
+        </script>
+        {% endif %}
+        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% block head %}{% endblock %}
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <script src="/static/app.js" defer></script>
+    </body>
+</html>

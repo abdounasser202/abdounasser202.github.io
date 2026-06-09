@@ -1,0 +1,1199 @@
+{
+  "id": "cdm-2026",
+  "name": "Coupe du Monde 2026",
+  "short_name": "CDM 2026",
+  "host": "USA · Canada · Mexique",
+  "start_date": "2026-06-11",
+  "end_date": "2026-07-19",
+  "tz_display": "Europe/Paris",
+  "fav_teams": [
+    {
+      "code": "MAR",
+      "name_en": "Morocco",
+      "name_fr": "Maroc",
+      "flag": "🇲🇦"
+    },
+    {
+      "code": "SEN",
+      "name_en": "Senegal",
+      "name_fr": "Sénégal",
+      "flag": "🇸🇳"
+    },
+    {
+      "code": "DZA",
+      "name_en": "Algeria",
+      "name_fr": "Algérie",
+      "flag": "🇩🇿"
+    },
+    {
+      "code": "EGY",
+      "name_en": "Egypt",
+      "name_fr": "Égypte",
+      "flag": "🇪🇬"
+    },
+    {
+      "code": "CIV",
+      "name_en": "Ivory Coast",
+      "name_fr": "Côte d'Ivoire",
+      "flag": "🇨🇮"
+    },
+    {
+      "code": "FRA",
+      "name_en": "France",
+      "name_fr": "France",
+      "flag": "🇫🇷"
+    },
+    {
+      "code": "ESP",
+      "name_en": "Spain",
+      "name_fr": "Espagne",
+      "flag": "🇪🇸"
+    },
+    {
+      "code": "ARG",
+      "name_en": "Argentina",
+      "name_fr": "Argentine",
+      "flag": "🇦🇷"
+    },
+    {
+      "code": "ENG",
+      "name_en": "England",
+      "name_fr": "Angleterre",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+      "code": "POR",
+      "name_en": "Portugal",
+      "name_fr": "Portugal",
+      "flag": "🇵🇹"
+    }
+  ],
+  "chocs": [
+    [
+      "BRA",
+      "MAR"
+    ],
+    [
+      "GER",
+      "CIV"
+    ],
+    [
+      "BEL",
+      "EGY"
+    ],
+    [
+      "ESP",
+      "URU"
+    ],
+    [
+      "FRA",
+      "SEN"
+    ],
+    [
+      "DZA",
+      "ARG"
+    ],
+    [
+      "COL",
+      "POR"
+    ],
+    [
+      "CRO",
+      "ENG"
+    ]
+  ],
+  "sections": [
+    {
+      "id": "group-c",
+      "label": "Groupe C",
+      "kind": "group"
+    },
+    {
+      "id": "group-e",
+      "label": "Groupe E",
+      "kind": "group"
+    },
+    {
+      "id": "group-g",
+      "label": "Groupe G",
+      "kind": "group"
+    },
+    {
+      "id": "group-h",
+      "label": "Groupe H",
+      "kind": "group"
+    },
+    {
+      "id": "group-i",
+      "label": "Groupe I",
+      "kind": "group"
+    },
+    {
+      "id": "group-j",
+      "label": "Groupe J",
+      "kind": "group"
+    },
+    {
+      "id": "group-k",
+      "label": "Groupe K",
+      "kind": "group"
+    },
+    {
+      "id": "group-l",
+      "label": "Groupe L",
+      "kind": "group"
+    },
+    {
+      "id": "round-32",
+      "label": "Seizièmes de finale",
+      "kind": "knockout"
+    },
+    {
+      "id": "round-16",
+      "label": "Huitièmes de finale",
+      "kind": "knockout"
+    },
+    {
+      "id": "quarter",
+      "label": "Quarts de finale",
+      "kind": "knockout"
+    },
+    {
+      "id": "semi",
+      "label": "Demi-finales",
+      "kind": "knockout"
+    },
+    {
+      "id": "third-place",
+      "label": "Match pour la 3e place",
+      "kind": "knockout"
+    },
+    {
+      "id": "final",
+      "label": "Finale",
+      "kind": "knockout"
+    }
+  ],
+  "matches": [
+    {
+      "id": "2026-06-13-brazil-morocco",
+      "section": "group-c",
+      "kickoff_utc": "2026-06-13T22:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "BRA",
+        "name_en": "Brazil",
+        "name_fr": "Brésil"
+      },
+      "team2": {
+        "code": "MAR",
+        "name_en": "Morocco",
+        "name_fr": "Maroc"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    },
+    {
+      "id": "2026-06-19-scotland-morocco",
+      "section": "group-c",
+      "kickoff_utc": "2026-06-19T22:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "SCO",
+        "name_en": "Scotland",
+        "name_fr": "Écosse"
+      },
+      "team2": {
+        "code": "MAR",
+        "name_en": "Morocco",
+        "name_fr": "Maroc"
+      },
+      "venue": "Boston (Foxborough)"
+    },
+    {
+      "id": "2026-06-24-morocco-haiti",
+      "section": "group-c",
+      "kickoff_utc": "2026-06-24T22:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "MAR",
+        "name_en": "Morocco",
+        "name_fr": "Maroc"
+      },
+      "team2": {
+        "code": "HAI",
+        "name_en": "Haiti",
+        "name_fr": "Haïti"
+      },
+      "venue": "Atlanta"
+    },
+    {
+      "id": "2026-06-14-ivory-coast-ecuador",
+      "section": "group-e",
+      "kickoff_utc": "2026-06-14T23:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "CIV",
+        "name_en": "Ivory Coast",
+        "name_fr": "Côte d'Ivoire"
+      },
+      "team2": {
+        "code": "ECU",
+        "name_en": "Ecuador",
+        "name_fr": "Équateur"
+      },
+      "venue": "Philadelphia"
+    },
+    {
+      "id": "2026-06-20-germany-ivory-coast",
+      "section": "group-e",
+      "kickoff_utc": "2026-06-20T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "GER",
+        "name_en": "Germany",
+        "name_fr": "Allemagne"
+      },
+      "team2": {
+        "code": "CIV",
+        "name_en": "Ivory Coast",
+        "name_fr": "Côte d'Ivoire"
+      },
+      "venue": "Toronto"
+    },
+    {
+      "id": "2026-06-25-curacao-ivory-coast",
+      "section": "group-e",
+      "kickoff_utc": "2026-06-25T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "CUR",
+        "name_en": "Curaçao",
+        "name_fr": "Curaçao"
+      },
+      "team2": {
+        "code": "CIV",
+        "name_en": "Ivory Coast",
+        "name_fr": "Côte d'Ivoire"
+      },
+      "venue": "Philadelphia"
+    },
+    {
+      "id": "2026-06-15-belgium-egypt",
+      "section": "group-g",
+      "kickoff_utc": "2026-06-15T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "BEL",
+        "name_en": "Belgium",
+        "name_fr": "Belgique"
+      },
+      "team2": {
+        "code": "EGY",
+        "name_en": "Egypt",
+        "name_fr": "Égypte"
+      },
+      "venue": "Seattle"
+    },
+    {
+      "id": "2026-06-21-new-zealand-egypt",
+      "section": "group-g",
+      "kickoff_utc": "2026-06-22T01:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "NZL",
+        "name_en": "New Zealand",
+        "name_fr": "Nouvelle-Zélande"
+      },
+      "team2": {
+        "code": "EGY",
+        "name_en": "Egypt",
+        "name_fr": "Égypte"
+      },
+      "venue": "Vancouver"
+    },
+    {
+      "id": "2026-06-26-egypt-iran",
+      "section": "group-g",
+      "kickoff_utc": "2026-06-27T03:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "EGY",
+        "name_en": "Egypt",
+        "name_fr": "Égypte"
+      },
+      "team2": {
+        "code": "IRN",
+        "name_en": "Iran",
+        "name_fr": "Iran"
+      },
+      "venue": "Seattle"
+    },
+    {
+      "id": "2026-06-15-spain-cape-verde",
+      "section": "group-h",
+      "kickoff_utc": "2026-06-15T16:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "ESP",
+        "name_en": "Spain",
+        "name_fr": "Espagne"
+      },
+      "team2": {
+        "code": "CAP",
+        "name_en": "Cape Verde",
+        "name_fr": "Cap-Vert"
+      },
+      "venue": "Atlanta"
+    },
+    {
+      "id": "2026-06-21-spain-saudi-arabia",
+      "section": "group-h",
+      "kickoff_utc": "2026-06-21T16:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "ESP",
+        "name_en": "Spain",
+        "name_fr": "Espagne"
+      },
+      "team2": {
+        "code": "KSA",
+        "name_en": "Saudi Arabia",
+        "name_fr": "Arabie Saoudite"
+      },
+      "venue": "Atlanta"
+    },
+    {
+      "id": "2026-06-26-uruguay-spain",
+      "section": "group-h",
+      "kickoff_utc": "2026-06-27T00:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "URU",
+        "name_en": "Uruguay",
+        "name_fr": "Uruguay"
+      },
+      "team2": {
+        "code": "ESP",
+        "name_en": "Spain",
+        "name_fr": "Espagne"
+      },
+      "venue": "Guadalajara (Zapopan)"
+    },
+    {
+      "id": "2026-06-16-france-senegal",
+      "section": "group-i",
+      "kickoff_utc": "2026-06-16T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "FRA",
+        "name_en": "France",
+        "name_fr": "France"
+      },
+      "team2": {
+        "code": "SEN",
+        "name_en": "Senegal",
+        "name_fr": "Sénégal"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    },
+    {
+      "id": "2026-06-22-france-iraq",
+      "section": "group-i",
+      "kickoff_utc": "2026-06-22T21:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "FRA",
+        "name_en": "France",
+        "name_fr": "France"
+      },
+      "team2": {
+        "code": "IRQ",
+        "name_en": "Iraq",
+        "name_fr": "Irak"
+      },
+      "venue": "Philadelphia"
+    },
+    {
+      "id": "2026-06-22-norway-senegal",
+      "section": "group-i",
+      "kickoff_utc": "2026-06-23T00:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "NOR",
+        "name_en": "Norway",
+        "name_fr": "Norvège"
+      },
+      "team2": {
+        "code": "SEN",
+        "name_en": "Senegal",
+        "name_fr": "Sénégal"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    },
+    {
+      "id": "2026-06-26-norway-france",
+      "section": "group-i",
+      "kickoff_utc": "2026-06-26T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "NOR",
+        "name_en": "Norway",
+        "name_fr": "Norvège"
+      },
+      "team2": {
+        "code": "FRA",
+        "name_en": "France",
+        "name_fr": "France"
+      },
+      "venue": "Boston (Foxborough)"
+    },
+    {
+      "id": "2026-06-26-senegal-iraq",
+      "section": "group-i",
+      "kickoff_utc": "2026-06-26T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "SEN",
+        "name_en": "Senegal",
+        "name_fr": "Sénégal"
+      },
+      "team2": {
+        "code": "IRQ",
+        "name_en": "Iraq",
+        "name_fr": "Irak"
+      },
+      "venue": "Toronto"
+    },
+    {
+      "id": "2026-06-16-argentina-algeria",
+      "section": "group-j",
+      "kickoff_utc": "2026-06-17T01:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "ARG",
+        "name_en": "Argentina",
+        "name_fr": "Argentine"
+      },
+      "team2": {
+        "code": "DZA",
+        "name_en": "Algeria",
+        "name_fr": "Algérie"
+      },
+      "venue": "Kansas City"
+    },
+    {
+      "id": "2026-06-22-argentina-austria",
+      "section": "group-j",
+      "kickoff_utc": "2026-06-22T17:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "ARG",
+        "name_en": "Argentina",
+        "name_fr": "Argentine"
+      },
+      "team2": {
+        "code": "AUS",
+        "name_en": "Austria",
+        "name_fr": "Autriche"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-06-22-jordan-algeria",
+      "section": "group-j",
+      "kickoff_utc": "2026-06-23T03:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "JOR",
+        "name_en": "Jordan",
+        "name_fr": "Jordanie"
+      },
+      "team2": {
+        "code": "DZA",
+        "name_en": "Algeria",
+        "name_fr": "Algérie"
+      },
+      "venue": "San Francisco Bay Area (Santa Clara)"
+    },
+    {
+      "id": "2026-06-27-algeria-austria",
+      "section": "group-j",
+      "kickoff_utc": "2026-06-28T02:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "DZA",
+        "name_en": "Algeria",
+        "name_fr": "Algérie"
+      },
+      "team2": {
+        "code": "AUS",
+        "name_en": "Austria",
+        "name_fr": "Autriche"
+      },
+      "venue": "Kansas City"
+    },
+    {
+      "id": "2026-06-27-jordan-argentina",
+      "section": "group-j",
+      "kickoff_utc": "2026-06-28T02:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "JOR",
+        "name_en": "Jordan",
+        "name_fr": "Jordanie"
+      },
+      "team2": {
+        "code": "ARG",
+        "name_en": "Argentina",
+        "name_fr": "Argentine"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-06-17-portugal-dr-congo",
+      "section": "group-k",
+      "kickoff_utc": "2026-06-17T17:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "POR",
+        "name_en": "Portugal",
+        "name_fr": "Portugal"
+      },
+      "team2": {
+        "code": "COD",
+        "name_en": "DR Congo",
+        "name_fr": "RD Congo"
+      },
+      "venue": "Houston"
+    },
+    {
+      "id": "2026-06-23-portugal-uzbekistan",
+      "section": "group-k",
+      "kickoff_utc": "2026-06-23T17:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "POR",
+        "name_en": "Portugal",
+        "name_fr": "Portugal"
+      },
+      "team2": {
+        "code": "UZB",
+        "name_en": "Uzbekistan",
+        "name_fr": "Ouzbékistan"
+      },
+      "venue": "Houston"
+    },
+    {
+      "id": "2026-06-27-colombia-portugal",
+      "section": "group-k",
+      "kickoff_utc": "2026-06-27T23:30:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "COL",
+        "name_en": "Colombia",
+        "name_fr": "Colombie"
+      },
+      "team2": {
+        "code": "POR",
+        "name_en": "Portugal",
+        "name_fr": "Portugal"
+      },
+      "venue": "Miami (Miami Gardens)"
+    },
+    {
+      "id": "2026-06-17-england-croatia",
+      "section": "group-l",
+      "kickoff_utc": "2026-06-17T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "ENG",
+        "name_en": "England",
+        "name_fr": "Angleterre"
+      },
+      "team2": {
+        "code": "CRO",
+        "name_en": "Croatia",
+        "name_fr": "Croatie"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-06-23-england-ghana",
+      "section": "group-l",
+      "kickoff_utc": "2026-06-23T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "ENG",
+        "name_en": "England",
+        "name_fr": "Angleterre"
+      },
+      "team2": {
+        "code": "GHA",
+        "name_en": "Ghana",
+        "name_fr": "Ghana"
+      },
+      "venue": "Boston (Foxborough)"
+    },
+    {
+      "id": "2026-06-27-panama-england",
+      "section": "group-l",
+      "kickoff_utc": "2026-06-27T21:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "PAN",
+        "name_en": "Panama",
+        "name_fr": "Panama"
+      },
+      "team2": {
+        "code": "ENG",
+        "name_en": "England",
+        "name_fr": "Angleterre"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    },
+    {
+      "id": "2026-06-28-2a-2b",
+      "section": "round-32",
+      "kickoff_utc": "2026-06-28T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "2A",
+        "name_en": "2A",
+        "name_fr": "2e du groupe A"
+      },
+      "team2": {
+        "code": "2B",
+        "name_en": "2B",
+        "name_fr": "2e du groupe B"
+      },
+      "venue": "Los Angeles (Inglewood)"
+    },
+    {
+      "id": "2026-06-29-1c-2f",
+      "section": "round-32",
+      "kickoff_utc": "2026-06-29T17:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1C",
+        "name_en": "1C",
+        "name_fr": "1er du groupe C"
+      },
+      "team2": {
+        "code": "2F",
+        "name_en": "2F",
+        "name_fr": "2e du groupe F"
+      },
+      "venue": "Houston"
+    },
+    {
+      "id": "2026-06-29-1e-3a-b-c-d-f",
+      "section": "round-32",
+      "kickoff_utc": "2026-06-29T20:30:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1E",
+        "name_en": "1E",
+        "name_fr": "1er du groupe E"
+      },
+      "team2": {
+        "code": "3A/",
+        "name_en": "3A/B/C/D/F",
+        "name_fr": "3e du groupe parmi A/B/C/D/F"
+      },
+      "venue": "Boston (Foxborough)"
+    },
+    {
+      "id": "2026-06-29-1f-2c",
+      "section": "round-32",
+      "kickoff_utc": "2026-06-30T01:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1F",
+        "name_en": "1F",
+        "name_fr": "1er du groupe F"
+      },
+      "team2": {
+        "code": "2C",
+        "name_en": "2C",
+        "name_fr": "2e du groupe C"
+      },
+      "venue": "Monterrey (Guadalupe)"
+    },
+    {
+      "id": "2026-06-30-2e-2i",
+      "section": "round-32",
+      "kickoff_utc": "2026-06-30T17:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "2E",
+        "name_en": "2E",
+        "name_fr": "2e du groupe E"
+      },
+      "team2": {
+        "code": "2I",
+        "name_en": "2I",
+        "name_fr": "2e du groupe I"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-06-30-1i-3c-d-f-g-h",
+      "section": "round-32",
+      "kickoff_utc": "2026-06-30T21:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1I",
+        "name_en": "1I",
+        "name_fr": "1er du groupe I"
+      },
+      "team2": {
+        "code": "3C/",
+        "name_en": "3C/D/F/G/H",
+        "name_fr": "3e du groupe parmi C/D/F/G/H"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    },
+    {
+      "id": "2026-06-30-1a-3c-e-f-h-i",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-01T01:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1A",
+        "name_en": "1A",
+        "name_fr": "1er du groupe A"
+      },
+      "team2": {
+        "code": "3C/",
+        "name_en": "3C/E/F/H/I",
+        "name_fr": "3e du groupe parmi C/E/F/H/I"
+      },
+      "venue": "Mexico City"
+    },
+    {
+      "id": "2026-07-01-1l-3e-h-i-j-k",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-01T16:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1L",
+        "name_en": "1L",
+        "name_fr": "1er du groupe L"
+      },
+      "team2": {
+        "code": "3E/",
+        "name_en": "3E/H/I/J/K",
+        "name_fr": "3e du groupe parmi E/H/I/J/K"
+      },
+      "venue": "Atlanta"
+    },
+    {
+      "id": "2026-07-01-1g-3a-e-h-i-j",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-01T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1G",
+        "name_en": "1G",
+        "name_fr": "1er du groupe G"
+      },
+      "team2": {
+        "code": "3A/",
+        "name_en": "3A/E/H/I/J",
+        "name_fr": "3e du groupe parmi A/E/H/I/J"
+      },
+      "venue": "Seattle"
+    },
+    {
+      "id": "2026-07-01-1d-3b-e-f-i-j",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-02T00:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1D",
+        "name_en": "1D",
+        "name_fr": "1er du groupe D"
+      },
+      "team2": {
+        "code": "3B/",
+        "name_en": "3B/E/F/I/J",
+        "name_fr": "3e du groupe parmi B/E/F/I/J"
+      },
+      "venue": "San Francisco Bay Area (Santa Clara)"
+    },
+    {
+      "id": "2026-07-02-1h-2j",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-02T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1H",
+        "name_en": "1H",
+        "name_fr": "1er du groupe H"
+      },
+      "team2": {
+        "code": "2J",
+        "name_en": "2J",
+        "name_fr": "2e du groupe J"
+      },
+      "venue": "Los Angeles (Inglewood)"
+    },
+    {
+      "id": "2026-07-02-2k-2l",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-02T23:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "2K",
+        "name_en": "2K",
+        "name_fr": "2e du groupe K"
+      },
+      "team2": {
+        "code": "2L",
+        "name_en": "2L",
+        "name_fr": "2e du groupe L"
+      },
+      "venue": "Toronto"
+    },
+    {
+      "id": "2026-07-02-1b-3e-f-g-i-j",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-03T03:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1B",
+        "name_en": "1B",
+        "name_fr": "1er du groupe B"
+      },
+      "team2": {
+        "code": "3E/",
+        "name_en": "3E/F/G/I/J",
+        "name_fr": "3e du groupe parmi E/F/G/I/J"
+      },
+      "venue": "Vancouver"
+    },
+    {
+      "id": "2026-07-03-2d-2g",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-03T18:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "2D",
+        "name_en": "2D",
+        "name_fr": "2e du groupe D"
+      },
+      "team2": {
+        "code": "2G",
+        "name_en": "2G",
+        "name_fr": "2e du groupe G"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-07-03-1j-2h",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-03T22:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1J",
+        "name_en": "1J",
+        "name_fr": "1er du groupe J"
+      },
+      "team2": {
+        "code": "2H",
+        "name_en": "2H",
+        "name_fr": "2e du groupe H"
+      },
+      "venue": "Miami (Miami Gardens)"
+    },
+    {
+      "id": "2026-07-03-1k-3d-e-i-j-l",
+      "section": "round-32",
+      "kickoff_utc": "2026-07-04T01:30:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "1K",
+        "name_en": "1K",
+        "name_fr": "1er du groupe K"
+      },
+      "team2": {
+        "code": "3D/",
+        "name_en": "3D/E/I/J/L",
+        "name_fr": "3e du groupe parmi D/E/I/J/L"
+      },
+      "venue": "Kansas City"
+    },
+    {
+      "id": "2026-07-04-w73-w75",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-04T17:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W73",
+        "name_en": "W73",
+        "name_fr": "Vainqueur match 73"
+      },
+      "team2": {
+        "code": "W75",
+        "name_en": "W75",
+        "name_fr": "Vainqueur match 75"
+      },
+      "venue": "Houston"
+    },
+    {
+      "id": "2026-07-04-w74-w77",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-04T21:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W74",
+        "name_en": "W74",
+        "name_fr": "Vainqueur match 74"
+      },
+      "team2": {
+        "code": "W77",
+        "name_en": "W77",
+        "name_fr": "Vainqueur match 77"
+      },
+      "venue": "Philadelphia"
+    },
+    {
+      "id": "2026-07-05-w76-w78",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-05T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W76",
+        "name_en": "W76",
+        "name_fr": "Vainqueur match 76"
+      },
+      "team2": {
+        "code": "W78",
+        "name_en": "W78",
+        "name_fr": "Vainqueur match 78"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    },
+    {
+      "id": "2026-07-05-w79-w80",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-06T00:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W79",
+        "name_en": "W79",
+        "name_fr": "Vainqueur match 79"
+      },
+      "team2": {
+        "code": "W80",
+        "name_en": "W80",
+        "name_fr": "Vainqueur match 80"
+      },
+      "venue": "Mexico City"
+    },
+    {
+      "id": "2026-07-06-w83-w84",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-06T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W83",
+        "name_en": "W83",
+        "name_fr": "Vainqueur match 83"
+      },
+      "team2": {
+        "code": "W84",
+        "name_en": "W84",
+        "name_fr": "Vainqueur match 84"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-07-06-w81-w82",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-07T00:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W81",
+        "name_en": "W81",
+        "name_fr": "Vainqueur match 81"
+      },
+      "team2": {
+        "code": "W82",
+        "name_en": "W82",
+        "name_fr": "Vainqueur match 82"
+      },
+      "venue": "Seattle"
+    },
+    {
+      "id": "2026-07-07-w86-w88",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-07T16:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W86",
+        "name_en": "W86",
+        "name_fr": "Vainqueur match 86"
+      },
+      "team2": {
+        "code": "W88",
+        "name_en": "W88",
+        "name_fr": "Vainqueur match 88"
+      },
+      "venue": "Atlanta"
+    },
+    {
+      "id": "2026-07-07-w85-w87",
+      "section": "round-16",
+      "kickoff_utc": "2026-07-07T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W85",
+        "name_en": "W85",
+        "name_fr": "Vainqueur match 85"
+      },
+      "team2": {
+        "code": "W87",
+        "name_en": "W87",
+        "name_fr": "Vainqueur match 87"
+      },
+      "venue": "Vancouver"
+    },
+    {
+      "id": "2026-07-09-w89-w90",
+      "section": "quarter",
+      "kickoff_utc": "2026-07-09T20:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W89",
+        "name_en": "W89",
+        "name_fr": "Vainqueur match 89"
+      },
+      "team2": {
+        "code": "W90",
+        "name_en": "W90",
+        "name_fr": "Vainqueur match 90"
+      },
+      "venue": "Boston (Foxborough)"
+    },
+    {
+      "id": "2026-07-10-w93-w94",
+      "section": "quarter",
+      "kickoff_utc": "2026-07-10T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W93",
+        "name_en": "W93",
+        "name_fr": "Vainqueur match 93"
+      },
+      "team2": {
+        "code": "W94",
+        "name_en": "W94",
+        "name_fr": "Vainqueur match 94"
+      },
+      "venue": "Los Angeles (Inglewood)"
+    },
+    {
+      "id": "2026-07-11-w91-w92",
+      "section": "quarter",
+      "kickoff_utc": "2026-07-11T21:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W91",
+        "name_en": "W91",
+        "name_fr": "Vainqueur match 91"
+      },
+      "team2": {
+        "code": "W92",
+        "name_en": "W92",
+        "name_fr": "Vainqueur match 92"
+      },
+      "venue": "Miami (Miami Gardens)"
+    },
+    {
+      "id": "2026-07-11-w95-w96",
+      "section": "quarter",
+      "kickoff_utc": "2026-07-12T01:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W95",
+        "name_en": "W95",
+        "name_fr": "Vainqueur match 95"
+      },
+      "team2": {
+        "code": "W96",
+        "name_en": "W96",
+        "name_fr": "Vainqueur match 96"
+      },
+      "venue": "Kansas City"
+    },
+    {
+      "id": "2026-07-14-w97-w98",
+      "section": "semi",
+      "kickoff_utc": "2026-07-14T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W97",
+        "name_en": "W97",
+        "name_fr": "Vainqueur match 97"
+      },
+      "team2": {
+        "code": "W98",
+        "name_en": "W98",
+        "name_fr": "Vainqueur match 98"
+      },
+      "venue": "Dallas (Arlington)"
+    },
+    {
+      "id": "2026-07-15-w99-w100",
+      "section": "semi",
+      "kickoff_utc": "2026-07-15T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W99",
+        "name_en": "W99",
+        "name_fr": "Vainqueur match 99"
+      },
+      "team2": {
+        "code": "W10",
+        "name_en": "W100",
+        "name_fr": "Vainqueur match 100"
+      },
+      "venue": "Atlanta"
+    },
+    {
+      "id": "2026-07-18-l101-l102",
+      "section": "third-place",
+      "kickoff_utc": "2026-07-18T21:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "L10",
+        "name_en": "L101",
+        "name_fr": "Perdant match 101"
+      },
+      "team2": {
+        "code": "L10",
+        "name_en": "L102",
+        "name_fr": "Perdant match 102"
+      },
+      "venue": "Miami (Miami Gardens)"
+    },
+    {
+      "id": "2026-07-19-w101-w102",
+      "section": "final",
+      "kickoff_utc": "2026-07-19T19:00:00Z",
+      "duration_min": 120,
+      "team1": {
+        "code": "W10",
+        "name_en": "W101",
+        "name_fr": "Vainqueur match 101"
+      },
+      "team2": {
+        "code": "W10",
+        "name_en": "W102",
+        "name_fr": "Vainqueur match 102"
+      },
+      "venue": "New York/New Jersey (East Rutherford)"
+    }
+  ]
+}

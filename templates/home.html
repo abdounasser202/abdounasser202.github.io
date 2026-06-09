@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block head %}
+<title>Tournois</title>
+{% endblock %} {% block body %}
+<h1>Tournois</h1>
+<ul>
+  {% for t in tournaments %}
+  <li>
+    <a href="/{{ t.id }}/">{{ t.name }}</a> - {{ t.start_date }} → {{ t.end_date
+    }}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
