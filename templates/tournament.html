@@ -116,11 +116,11 @@
 
 <div class="ics-block">
   <p>
-    🗓️
-    <a href="webcal://{{ request.host }}/{{ t.id }}/calendar.ics"
-      >Ajouter à mon calendrier</a
+    <a class="ics-cta" href="webcal://{{ request.host }}/{{ t.id }}/calendar.ics"
+      >🗓️ Ajouter à mon calendrier</a
     >
-    - fonctionne avec Google Calendar, Apple Calendar et Outlook. Horaires et
+    <hr>
+    Fonctionne avec Google Calendar, Apple Calendar et Outlook. Horaires et
     scores mis à jour automatiquement.
   </p>
 </div>
@@ -271,14 +271,17 @@
         <span class="score-line"
           >Score : <span class="score-val empty">—</span></span
         >
-        <a
-          class="add"
-          href="{{ m | gcal_url(t) }}"
-          target="_blank"
-          rel="noopener"
-          aria-label="Ajouter {{ m.team1.name_fr }} – {{ m.team2.name_fr }} à Google Calendar"
-          >[+ Google Calendar]</a
-        >
+        <div class="actions">
+          <a
+            class="add"
+            href="{{ m | gcal_url(t) }}"
+            target="_blank"
+            rel="noopener"
+            aria-label="Ajouter {{ m.team1.name_fr }} – {{ m.team2.name_fr }} à mon agenda"
+            >📅 <span class="add-long">AJOUTER À MON AGENDA</span
+            ><span class="add-short">AGENDA</span></a
+          >
+        </div>
       </li>
       {% endfor %}
     </ul>

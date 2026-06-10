@@ -150,10 +150,12 @@
                     if (existing) return;
                     const badge = document.createElement("span");
                     badge.className = "choc-badge";
-                    badge.textContent = "⚡ CHOC";
-                    const teams = li.querySelector(".teams");
-                    if (teams) teams.after(badge);
-                    else li.prepend(badge);
+                    badge.innerHTML =
+                        '<svg class="choc-icon" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">' +
+                        '<path d="M13 2 4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg>CHOC';
+                    const actions = li.querySelector(".actions");
+                    if (actions) actions.appendChild(badge);
+                    else li.appendChild(badge);
                 });
             }
 
@@ -167,6 +169,10 @@
                 const selectedTeams = getSelectedChips();
                 const q = searchQuery.trim().toLowerCase();
 
+                // Are any inclusive "show me X" sources turned on at all?
+                const anySource =
+                    (fMesEquipes && selectedTeams.size > 0) || fChocs || fEliminatoires;
+
                 let visible = 0;
                 document.querySelectorAll("li[data-mid]").forEach((li) => {
                     const group = isGroupStage(li);
@@ -179,8 +185,13 @@
 
                     let show = fromMyTeams || fromChocs || fromElim;
 
-                    // Global restrictive modifiers.
-                    if (fHoraire) show = show && isReasonableTime(li);
+                    // "Heures raisonnables" narrows the active sources, but acts
+                    // as a source on its own when nothing else is selected.
+                    if (fHoraire) {
+                        show = anySource
+                            ? show && isReasonableTime(li)
+                            : isReasonableTime(li);
+                    }
                     if (q) show = show && li.textContent.toLowerCase().includes(q);
 
                     li.style.display = show ? "" : "none";
@@ -196,7 +207,7 @@
                 });
 
                 const emptyState = document.getElementById("empty-state");
-                const noFilter = !fChocs && !fEliminatoires &&
+                const noFilter = !fChocs && !fEliminatoires && !fHoraire &&
                                  (!fMesEquipes || selectedTeams.size === 0);
                 if (emptyState) {
                     if (visible === 0 && !q) {
@@ -360,21 +371,19 @@
                 items.forEach(li => {
                     const start = parseStart(li.dataset.start);
                     const end   = parseStart(li.dataset.end);
-                    const teams = li.querySelector(".teams");
-                    if (!teams) return;
+                    const actions = li.querySelector(".actions");
+                    if (!actions) return;
 
                     if (now >= start && now < end) {
                         const b = document.createElement("span");
                         b.className = "live-badge";
                         b.textContent = "● EN COURS";
-                        const anchor = li.querySelector(".choc-badge") || teams;
-                        anchor.after(b);
+                        actions.appendChild(b);
                     } else if (!nextSet && start > now) {
                         const b = document.createElement("span");
                         b.className = "next-badge";
                         b.textContent = "→ PROCHAIN";
-                        const anchor = li.querySelector(".choc-badge") || teams;
-                        anchor.after(b);
+                        actions.appendChild(b);
                         nextSet = true;
                     }
                 });
