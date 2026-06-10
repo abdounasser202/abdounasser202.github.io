@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="{{ request.args.get('theme','') }}">
     <head>
         {% if not debug %}
         <!-- Google tag (gtag.js) -->
@@ -13,14 +13,43 @@
         });
         </script>
         {% endif %}
-        
+
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {% block head %}{% endblock %}
         <link rel="stylesheet" href="/static/style.css" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% macro tournament_links(cls, active_id) %}
+        {%- for tn in tournaments %}
+        <a class="{{ cls }}{% if tn.id == active_id %} active{% endif %}" href="/{{ tn.id }}/">
+            <span class="t-name">{{ tn.short_name }}</span>
+            <span class="t-dates">{{ tn.start_date }} → {{ tn.end_date }}</span>
+        </a>
+        {%- endfor %}
+        {% endmacro %}
+        {% set active_id = t.id if t is defined else none %}
+
+        <nav class="tournament-strip" aria-label="Tournois">
+            {{ tournament_links('strip-row', active_id) }}
+        </nav>
+
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a href="/" class="brand"><img src="/static/logo.png" alt="" width="24" height="24" />Fandena</a>
+                <span class="tagline">Les matchs des meilleures équipes. Sans pub, sans paris.</span>
+            </div>
+        </header>
+
+        <div class="layout">
+            <nav class="sidebar" aria-label="Tournois">
+                {{ tournament_links('side-row', active_id) }}
+            </nav>
+            <main class="content">
+                {% block body %}{% endblock %}
+            </main>
+        </div>
+
         <script src="/static/app.js" defer></script>
     </body>
 </html>

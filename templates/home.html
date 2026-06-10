@@ -1,13 +1,11 @@
 {% extends "base.html" %} {% block head %}
-<title>Tournois</title>
+<title>Fandena - Tournois</title>
 {% endblock %} {% block body %}
-<h1>Tournois</h1>
-<ul>
-  {% for t in tournaments %}
-  <li>
-    <a href="/{{ t.id }}/">{{ t.name }}</a> - {{ t.start_date }} → {{ t.end_date
-    }}
-  </li>
-  {% endfor %}
-</ul>
+<div class="card welcome">
+  <h1>Fandena</h1>
+  <p>
+    Les matchs des meilleures équipes. Sans pub, sans paris. Choisis un tournoi
+    dans la liste pour afficher son calendrier.
+  </p>
+</div>
 {% endblock %}

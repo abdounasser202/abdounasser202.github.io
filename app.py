@@ -1,6 +1,7 @@
 from flask import Flask, render_template, abort, Response, redirect, url_for
 from pathlib import Path
 import json
+import logging
 import os
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -14,11 +15,79 @@ DATA_DIR = Path(__file__).parent / "data"
 def inject_debug():
     return {"debug": app.debug}
 
+
+@app.context_processor
+def inject_tournaments():
+    """Liste des tournois disponible dans TOUS les templates (sidebar + strip mobile)."""
+    return {"tournaments": list_tournaments()}
+
 OPENFOOTBALL_URL = (
     "https://cdn.jsdelivr.net/gh/openfootball/worldcup.json@master/2026/worldcup.json"
 )
 _live_cache = {"data": None, "ts": 0}
 CACHE_TTL = 5 * 60  # secondes 
+
+
+# ---------------------------------------------------------------------------
+# Drapeaux (zéro asset : émojis dérivés du code ISO 3166-1 alpha-2)
+# ---------------------------------------------------------------------------
+
+# Exceptions non-ISO (drapeaux régionaux Unicode)
+SPECIAL_FLAGS = {
+    "ENG": "🏴\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F",  # gb-eng
+    "SCO": "🏴\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F",  # gb-sct
+    "WAL": "🏴\U000E0067\U000E0062\U000E0077\U000E006C\U000E0073\U000E007F",  # gb-wls
+}
+
+# Codes FIFA (tels qu'utilisés dans nos JSON) → ISO 3166-1 alpha-2.
+# Pièges connus : AUS = Autriche dans ce dataset (l'Australie utiliserait
+# normalement AUS côté FIFA — à arbitrer si la source change), GER→DE,
+# POR→PT, KSA→SA, CRO→HR, CAP→CV, COD→CD.
+FIFA_TO_ISO2 = {
+    # Hôtes
+    "USA": "US", "CAN": "CA", "MEX": "MX",
+    # Afrique
+    "MAR": "MA", "SEN": "SN", "DZA": "DZ", "ALG": "DZ", "EGY": "EG",
+    "CIV": "CI", "GHA": "GH", "TUN": "TN", "RSA": "ZA", "CAP": "CV",
+    "COD": "CD",
+    # Europe
+    "FRA": "FR", "ESP": "ES", "POR": "PT", "GER": "DE", "NED": "NL",
+    "BEL": "BE", "CRO": "HR", "NOR": "NO", "SUI": "CH",
+    "AUS": "AT",  # Autriche dans ce dataset (voir note ci-dessus)
+    "AUT": "AT", "ITA": "IT", "DEN": "DK", "POL": "PL", "SWE": "SE",
+    "TUR": "TR", "UKR": "UA", "CZE": "CZ", "SVK": "SK", "ROU": "RO",
+    "IRL": "IE", "ISL": "IS", "SRB": "RS", "GRE": "GR", "ALB": "AL",
+    "MKD": "MK", "BIH": "BA", "KOS": "XK", "HUN": "HU", "SVN": "SI",
+    # Amériques
+    "ARG": "AR", "BRA": "BR", "URU": "UY", "COL": "CO", "ECU": "EC",
+    "PAR": "PY", "CHL": "CL", "PER": "PE", "VEN": "VE", "BOL": "BO",
+    "PAN": "PA", "CRC": "CR", "HON": "HN", "JAM": "JM", "HAI": "HT",
+    "CUR": "CW", "SLV": "SV",
+    # Asie / Océanie
+    "JPN": "JP", "KOR": "KR", "IRN": "IR", "KSA": "SA", "QAT": "QA",
+    "UZB": "UZ", "JOR": "JO", "IRQ": "IQ", "UAE": "AE", "NZL": "NZ",
+}
+
+
+def iso_flag(iso2):
+    return "".join(chr(0x1F1E6 + ord(c) - 65) for c in iso2.upper())
+
+
+def flag_of(code):
+    """SPECIAL → dérivé ISO → '' (avec warning). Tournoi-agnostique : ne crashe jamais."""
+    if code in SPECIAL_FLAGS:
+        return SPECIAL_FLAGS[code]
+    iso2 = FIFA_TO_ISO2.get(code)
+    if iso2:
+        return iso_flag(iso2)
+    if len(code) == 3 and code.isalpha():
+        logging.warning("no flag for %s", code)
+    return ""
+
+
+def is_placeholder_code(code):
+    """Équipes non encore déterminées : '2A', 'W73', '3A/', 'L10'…"""
+    return not (len(code) == 3 and code.isalpha())
 
 
 def fetch_live_matches():
@@ -108,7 +177,7 @@ def list_tournaments():
 
 
 def enrich_match(m, tz_name):
-    """Ajoute local_dt, is_night, status à chaque match."""
+    """Ajoute local_dt, is_night, is_okhour, status à chaque match."""
     utc = datetime.fromisoformat(m["kickoff_utc"].replace("Z", "+00:00"))
     local = utc.astimezone(ZoneInfo(tz_name))
     now = datetime.now(timezone.utc)
@@ -125,6 +194,9 @@ def enrich_match(m, tz_name):
         **m,
         "local_dt": local,
         "is_night": local.hour < 7 or local.hour >= 23,
+        # 13h–minuit pile, heure locale d'affichage (minuit pile OK, 00h01+ non)
+        "is_okhour": (13 <= local.hour <= 23)
+        or (local.hour == 0 and local.minute == 0),
         "status": status,
         "kickoff_utc_end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
@@ -138,8 +210,11 @@ def is_choc(m, chocs):
 
 @app.route("/")
 def home():
-    # return render_template("home.html", tournaments=list_tournaments())
-    return redirect(url_for("tournament", slug="cdm-2026"))
+    # Sidebar visible partout ; "/" redirige vers le premier tournoi (moins de code).
+    ts = list_tournaments()
+    if not ts:
+        abort(404)
+    return redirect(url_for("tournament", slug=ts[0]["id"]))
 
 
 @app.route("/<slug>/")
@@ -147,14 +222,23 @@ def tournament(slug):
     t = load_tournament(slug)
     tz = t.get("tz_display", "Europe/Paris")
     chocs = t.get("chocs", [])
-    flags = {team["code"]: team.get("flag", "") for team in t.get("fav_teams", [])}
+    fav_codes = {team["code"] for team in t.get("fav_teams", [])}
+    kind_by_section = {s["id"]: s["kind"] for s in t["sections"]}
 
     matches = []
     for m in t["matches"]:
         em = enrich_match(m, tz)
         em["is_choc"] = is_choc(em, chocs)
+        em["knockout"] = kind_by_section.get(em["section"]) == "knockout"
         for key in ("team1", "team2"):
-            em[key] = {**em[key], "flag": flags.get(em[key]["code"], "")}
+            team = em[key]
+            placeholder = is_placeholder_code(team["code"])
+            em[key] = {
+                **team,
+                "flag": "" if placeholder else flag_of(team["code"]),
+                "placeholder": placeholder,
+                "fav": team["code"] in fav_codes,
+            }
         matches.append(em)
 
     by_section = {}
@@ -180,17 +264,9 @@ def tournament(slug):
     )
 
 
-@app.template_filter("dtformat_ics")
-def dtformat_ics(dt):
-    """'2026-06-13T22:00:00Z' → '20260613T220000Z'"""
-    if isinstance(dt, str):
-        return dt.replace("-", "").replace(":", "").split(".")[0]
-    return dt.strftime("%Y%m%dT%H%M%SZ")
-
-
-@app.template_filter("format_date_fr")
-def format_date_fr(dt):
-    """datetime → 'Sam 14 juin · 00h00'"""
+@app.template_filter("format_day_fr")
+def format_day_fr(dt):
+    """datetime → 'Mar 16 juin'"""
     jours = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
     mois = [
         "jan",
@@ -206,9 +282,7 @@ def format_date_fr(dt):
         "nov",
         "déc",
     ]
-    return (
-        f"{jours[dt.weekday()]} {dt.day} {mois[dt.month - 1]} · {dt.strftime('%Hh%M')}"
-    )
+    return f"{jours[dt.weekday()]} {dt.day} {mois[dt.month - 1]}"
 
 
 @app.template_filter("gcal_url")
@@ -280,7 +354,3 @@ def calendar_ics(slug):
             "Cache-Control": "public, max-age=3600",
         },
     )
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
