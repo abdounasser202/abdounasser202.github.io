@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, Response, redirect, url_for
+from flask import Flask, render_template, abort, Response, redirect, url_for, request
 from pathlib import Path
 import json
 import logging
@@ -9,7 +9,9 @@ from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
 app.debug = os.environ.get("FLASK_DEBUG", "0") == "1"
+
 DATA_DIR = Path(__file__).parent / "data"
+CANONICAL_HOST = "fandena.net"
 
 @app.context_processor
 def inject_debug():
@@ -354,3 +356,12 @@ def calendar_ics(slug):
             "Cache-Control": "public, max-age=3600",
         },
     )
+
+
+@app.before_request
+def redirect_legacy_host():
+    host = request.host.split(":")[0]
+    if host not in (CANONICAL_HOST, "localhost", "127.0.0.1"):
+        return redirect(
+            f"https://{CANONICAL_HOST}{request.full_path.rstrip('?')}", code=301
+        )

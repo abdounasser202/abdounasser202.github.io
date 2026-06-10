@@ -17,16 +17,13 @@
 />
 <meta name="author" content="Fandena" />
 <meta name="theme-color" content="#00985f" />
-<link rel="canonical" href="https://nasser.peef.dev/" />
+<link rel="canonical" href="https://fandena.net/" />
 <link rel="icon" type="image/x-icon" href="/static/favicon.png" sizes="any" />
 <link rel="shortcut icon" href="/static/favicon.png" type="image/png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="fr_FR" />
-<meta
-  name="apple-mobile-web-app-title"
-  content="Fandena"
-/>
+<meta name="apple-mobile-web-app-title" content="Fandena" />
 <meta property="og:image" content="/static/og-image.png" />
 <meta property="og:image:url" content="/static/og-image.png" />
 <meta property="og:image:type" content="image/png" />
@@ -40,7 +37,7 @@
   property="og:description"
   content="Les matchs des meilleures équipes. Sans pub, sans paris. Maroc, Sénégal, Algérie, Égypte, Côte d'Ivoire, France, Espagne, Argentine, Angleterre, Portugal - {{ total_matches }} matchs à votre heure locale, scores live, export calendrier."
 />
-<meta property="og:url" content="https://nasser.peef.dev/" />
+<meta property="og:url" content="https://fandena.net/" />
 <meta property="og:site_name" content="Fandena" />
 <meta name="twitter:card" content="summary" />
 <meta
@@ -101,19 +98,41 @@
       ]
   }
 </script>
-{% endblock %} {% block body %}
-{% macro team_side(team, side) -%}
-<span class="team {{ side }}{% if team.placeholder %} ph{% endif %}{% if team.fav %} fav{% endif %}">{% if side == 't2' and team.flag %}<span class="flag" aria-hidden="true">{{ team.flag }}</span>{% endif %}<span class="t-name">{{ team.name_fr }}</span>{% if side == 't1' and team.flag %}<span class="flag" aria-hidden="true">{{ team.flag }}</span>{% endif %}</span>
-{%- endmacro %}
-
-{% macro match_row(m) %}
+{% endblock %} {% block body %} {% macro team_side(team, side) -%}
+<span
+  class="team {{ side }}{% if team.placeholder %} ph{% endif %}{% if team.fav %} fav{% endif %}"
+  >{% if side == 't2' and team.flag %}<span class="flag" aria-hidden="true"
+    >{{ team.flag }}</span
+  >{% endif %}<span class="t-name">{{ team.name_fr }}</span>{% if side == 't1'
+  and team.flag %}<span class="flag" aria-hidden="true">{{ team.flag }}</span>{%
+  endif %}</span
+>
+{%- endmacro %} {% macro match_row(m) %}
 <li
   class="match"
   data-mid="{{ m.id }}"
   data-codes="{{ m.team1.code }},{{ m.team2.code }}"
-  {% if m.is_choc %}data-choc="1"{% endif %}
-  {% if m.knockout %}data-ko="1"{% endif %}
-  {% if m.is_okhour %}data-okhour="1"{% endif %}
+  {%
+  if
+  m.is_choc
+  %}data-choc="1"
+  {%
+  endif
+  %}
+  {%
+  if
+  m.knockout
+  %}data-ko="1"
+  {%
+  endif
+  %}
+  {%
+  if
+  m.is_okhour
+  %}data-okhour="1"
+  {%
+  endif
+  %}
   data-status="{{ m.status }}"
   data-end="{{ m.kickoff_utc_end }}"
   data-t1="{{ m.team1.name_fr }}"
@@ -129,7 +148,10 @@
   </div>
   <div class="m-teams">
     {{ team_side(m.team1, 't1') }}
-    <span class="m-score{% if m.status == 'live' %} live{% endif %}">{% if m.score_ft %}{{ m.score_ft[0] }} – {{ m.score_ft[1] }}{% else %}<span class="m-vs">–</span>{% endif %}</span>
+    <span class="m-score{% if m.status == 'live' %} live{% endif %}"
+      >{% if m.score_ft %}{{ m.score_ft[0] }} – {{ m.score_ft[1] }}{% else
+      %}<span class="m-vs">–</span>{% endif %}</span
+    >
     {{ team_side(m.team2, 't2') }}
   </div>
   <div class="m-tags">
@@ -168,7 +190,9 @@
 
 <div class="card ics-block">
   <p>
-    <a class="ics-cta" href="webcal://{{ request.host }}/{{ t.id }}/calendar.ics"
+    <a
+      class="ics-cta"
+      href="webcal://{{ request.host }}/{{ t.id }}/calendar.ics"
       >Ajouter à mon calendrier</a
     >
   </p>
@@ -218,7 +242,9 @@
         <span class="ftog-box" aria-hidden="true"></span>
         <span class="ftog-main">Phases éliminatoires</span>
       </button>
-      <span class="ftog-sub">— seizièmes, huitièmes, quarts, demies, finale</span>
+      <span class="ftog-sub"
+        >— seizièmes, huitièmes, quarts, demies, finale</span
+      >
     </div>
 
     <div class="ftog">
@@ -287,8 +313,7 @@
   <p>
     Fandena — Les matchs des meilleures équipes. Sans pub, sans paris sportifs.
     Statistiques de visite via Google Analytics (sans cookie de tracking,
-    données anonymisées).
-    Construit avec
+    données anonymisées). Construit avec
     <a
       href="https://github.com/openfootball/worldcup.json"
       target="_blank"
