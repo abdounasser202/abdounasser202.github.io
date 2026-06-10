@@ -257,10 +257,15 @@
         %}
         data-status="{{ m.status }}"
       >
-        <time datetime="{{ m.kickoff_utc }}" class="date"
-          >{{ m.local_dt | format_date_fr }}</time
-        >
-        {% if m.is_night %}<span class="night">(nuit)</span>{% endif %}
+        <span class="date-line">
+          <time datetime="{{ m.kickoff_utc }}" class="date"
+            >{{ m.local_dt | format_date_fr }}</time
+          >
+          {% if m.is_night %}<span class="night"
+            ><svg class="night-icon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg
+            >dans la nuit</span
+          >{% endif %}
+        </span>
         <span class="teams">{{ m.team1.name_fr }} – {{ m.team2.name_fr }}</span>
         <span class="venue">{{ m.venue }}</span>
         <span class="score-line"

@@ -92,15 +92,23 @@
                 color: #555;
             }
             .night {
-                display: inline-block;
-                color: #993300;
-                background: #fff4d6;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.3em;
+                color: #f3f1ff;
+                background: #38386b;
                 font-size: 0.78em;
-                padding: 0.05em 0.4em;
+                padding: 0.1em 0.5em;
                 margin-left: 0.3em;
+                border-radius: 999px;
                 vertical-align: middle;
                 font-weight: 600;
                 letter-spacing: 0.02em;
+            }
+
+            .night-icon {
+                color: #ffd34d;
+                flex: 0 0 auto;
             }
             .grp ul {
                 list-style: none;
@@ -127,11 +135,11 @@
             }
 
             .grp li[data-choc="1"] {
-                background: #fffbf0;
+                background: #fdeee9;
                 margin: 0 -1em;
                 padding-left: 1em;
                 padding-right: 1em;
-                border-left: 3px solid #d9af2f;
+                border-left: 3px solid #d9482f;
             }
 
             .grp li[data-choc="1"]:last-child {
@@ -152,18 +160,20 @@
             }
 
             .grp li[data-choc="1"][data-status="live"] {
-                background: linear-gradient(to right, #fff4d6 0%, #fffbf0 50%);
+                background: linear-gradient(to right, #fff4d6 0%, #fdeee9 50%);
             }
 
-            .grp li > time.date {
+            .grp li .date-line {
                 grid-area: date;
                 align-self: start;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2em;
             }
 
-            .grp li .night {
-                grid-area: date;
-                align-self: end;
-                margin-top: 0.2em;
+            .grp li .date-line .night {
+                margin-left: 0;
             }
 
             .grp li .teams {
@@ -338,9 +348,11 @@
                     row-gap: 0.3em;
                     padding: 0.9em 0;
                 }
-                .grp li .night {
-                    margin-left: 0.4em;
-                    align-self: auto;
+                .grp li .date-line {
+                    flex-direction: row;
+                    align-items: baseline;
+                    gap: 0.4em;
+                    flex-wrap: wrap;
                 }
             }
 
