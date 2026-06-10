@@ -358,6 +358,37 @@ def calendar_ics(slug):
     )
 
 
+@app.route("/sitemap.xml")
+def sitemap():
+    lastmod = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for tour in list_tournaments():
+        loc = f"https://{CANONICAL_HOST}/{tour['id']}/"
+        lines.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>")
+    lines.append("</urlset>")
+    return Response(
+        "\n".join(lines),
+        mimetype="application/xml",
+        headers={"Cache-Control": "public, max-age=3600"},
+    )
+
+
+@app.route("/robots.txt")
+def robots():
+    body = "\n".join(
+        [
+            "User-agent: *",
+            "Allow: /",
+            f"Sitemap: https://{CANONICAL_HOST}/sitemap.xml",
+            "",
+        ]
+    )
+    return Response(body, mimetype="text/plain")
+
+
 @app.before_request
 def redirect_legacy_host():
     host = request.host.split(":")[0]
