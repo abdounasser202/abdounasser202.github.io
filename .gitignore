@@ -14,3 +14,4 @@ Gemfile
 Gemfile.lock
 .env
 docker-compose.override.yml
+logs/

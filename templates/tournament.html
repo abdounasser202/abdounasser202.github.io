@@ -193,6 +193,7 @@
     <a
       class="ics-cta"
       href="webcal://{{ request.host }}/{{ t.id }}/calendar.ics"
+      onclick="gtag('event','ics_subscribe_click',{tournament:'{{ t.id }}'})"
       >Ajouter à mon calendrier</a
     >
   </p>

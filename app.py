@@ -1,7 +1,9 @@
 from flask import Flask, render_template, abort, Response, redirect, url_for, request
 from pathlib import Path
+import hashlib
 import json
 import logging
+from logging.handlers import RotatingFileHandler
 import os
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -12,6 +14,20 @@ app.debug = os.environ.get("FLASK_DEBUG", "0") == "1"
 
 DATA_DIR = Path(__file__).parent / "data"
 CANONICAL_HOST = "fandena.net"
+
+# ---------------------------------------------------------------------------
+# Logger ICS, sans identification d'infos personnelles (IP hashée), fichier rotatif
+# ---------------------------------------------------------------------------
+LOG_DIR = Path(__file__).parent / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+ics_logger = logging.getLogger("ics_access")
+ics_logger.setLevel(logging.INFO)
+_ics_handler = RotatingFileHandler(
+    LOG_DIR / "ics_access.log", maxBytes=10_000_000, backupCount=5
+)
+_ics_handler.setFormatter(logging.Formatter("%(asctime)s\t%(message)s"))
+ics_logger.addHandler(_ics_handler)
+ics_logger.propagate = False
 
 @app.context_processor
 def inject_debug():
@@ -348,6 +364,11 @@ def build_ics(t):
 def calendar_ics(slug):
     t = load_tournament(slug)
     ics = build_ics(t)
+
+    ua = request.headers.get("User-Agent", "-")
+    ip_hash = hashlib.sha256((request.remote_addr or "").encode()).hexdigest()[:12]
+    ics_logger.info(f"{slug}\t{ip_hash}\t{ua}")
+
     return Response(
         ics,
         mimetype="text/calendar; charset=utf-8",
