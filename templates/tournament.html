@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block head %}
 <title>
-  Fandena — Calendrier {{ t.short_name }} : les matchs des meilleures équipes,
+  Fandena - Calendrier {{ t.short_name }} : les matchs des meilleures équipes,
   scores live
 </title>
 <meta
@@ -31,7 +31,7 @@
 <meta property="og:image:height" content="630" />
 <meta
   property="og:title"
-  content="Fandena — {{ t.short_name }} : les matchs des meilleures équipes"
+  content="Fandena - {{ t.short_name }} : les matchs des meilleures équipes"
 />
 <meta
   property="og:description"
@@ -42,7 +42,7 @@
 <meta name="twitter:card" content="summary" />
 <meta
   name="twitter:title"
-  content="Fandena — {{ t.short_name }} : les matchs des meilleures équipes"
+  content="Fandena - {{ t.short_name }} : les matchs des meilleures équipes"
 />
 <meta
   name="twitter:description"
@@ -206,7 +206,7 @@
 <div class="card email-capture">
   <p class="email-title">🔔 Ne rate pas le prochain tournoi !</p>
   <p class="email-sub">
-    CAN, Champions League, Liga, Premier League... <br>
+    CAN, Champions League, Liga, Premier League... <br />
     Laisse ton email, on te prévient dès que ça commence. Zéro spam, promis.
   </p>
   <form id="email-form" class="email-form">
@@ -277,7 +277,7 @@
         <span class="ftog-main">Phases éliminatoires</span>
       </button>
       <span class="ftog-sub"
-        >— seizièmes, huitièmes, quarts, demies, finale</span
+        >- seizièmes, huitièmes, quarts, demies, finale</span
       >
     </div>
 
@@ -321,7 +321,7 @@
 {% for s in sections %}
 <section class="card grp" id="{{ s.id }}">
   <h2 class="card-head">
-    {{ s.label }}{% if by_section[s.id].teams_fr %} — {{
+    {{ s.label }}{% if by_section[s.id].teams_fr %} - {{
     by_section[s.id].teams_fr | join(', ') }}{% endif %}
   </h2>
   <ul>
@@ -345,7 +345,7 @@
 
 <footer class="note">
   <p>
-    Fandena — Les matchs des meilleures équipes. Sans pub, sans paris sportifs.
+    Fandena - Les matchs des meilleures équipes. Sans pub, sans paris sportifs.
     Statistiques de visite via Google Analytics (sans cookie de tracking,
     données anonymisées). Construit avec
     <a
@@ -362,7 +362,7 @@
     Ajouter à mon calendrier » en haut de page.
   </p>
   <p>
-    <a href="/impressum">Impressum</a> ·
+    <a href="/impressum">Impressum / Mentions légales</a> ·
     <a href="/confidentialite">Politique de confidentialité</a>
   </p>
 </footer>

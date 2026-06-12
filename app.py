@@ -63,11 +63,12 @@ def inject_tournaments():
     """Liste des tournois disponible dans TOUS les templates (sidebar + strip mobile)."""
     return {"tournaments": list_tournaments()}
 
+
 OPENFOOTBALL_URL = (
     "https://cdn.jsdelivr.net/gh/openfootball/worldcup.json@master/2026/worldcup.json"
 )
 _live_cache = {"data": None, "ts": 0}
-CACHE_TTL = 5 * 60  # secondes 
+CACHE_TTL = 5 * 60  # secondes
 
 
 # ---------------------------------------------------------------------------
@@ -76,38 +77,92 @@ CACHE_TTL = 5 * 60  # secondes
 
 # Exceptions non-ISO (drapeaux régionaux Unicode)
 SPECIAL_FLAGS = {
-    "ENG": "🏴\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F",  # gb-eng
-    "SCO": "🏴\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F",  # gb-sct
-    "WAL": "🏴\U000E0067\U000E0062\U000E0077\U000E006C\U000E0073\U000E007F",  # gb-wls
+    "ENG": "🏴\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f",  # gb-eng
+    "SCO": "🏴\U000e0067\U000e0062\U000e0073\U000e0063\U000e0074\U000e007f",  # gb-sct
+    "WAL": "🏴\U000e0067\U000e0062\U000e0077\U000e006c\U000e0073\U000e007f",  # gb-wls
 }
 
 # Codes FIFA (tels qu'utilisés dans nos JSON) → ISO 3166-1 alpha-2.
 # Pièges connus : AUS = Autriche dans ce dataset (l'Australie utiliserait
-# normalement AUS côté FIFA — à arbitrer si la source change), GER→DE,
+# normalement AUS côté FIFA - à arbitrer si la source change), GER→DE,
 # POR→PT, KSA→SA, CRO→HR, CAP→CV, COD→CD.
 FIFA_TO_ISO2 = {
     # Hôtes
-    "USA": "US", "CAN": "CA", "MEX": "MX",
+    "USA": "US",
+    "CAN": "CA",
+    "MEX": "MX",
     # Afrique
-    "MAR": "MA", "SEN": "SN", "DZA": "DZ", "ALG": "DZ", "EGY": "EG",
-    "CIV": "CI", "GHA": "GH", "TUN": "TN", "RSA": "ZA", "CAP": "CV",
+    "MAR": "MA",
+    "SEN": "SN",
+    "DZA": "DZ",
+    "ALG": "DZ",
+    "EGY": "EG",
+    "CIV": "CI",
+    "GHA": "GH",
+    "TUN": "TN",
+    "RSA": "ZA",
+    "CAP": "CV",
     "COD": "CD",
     # Europe
-    "FRA": "FR", "ESP": "ES", "POR": "PT", "GER": "DE", "NED": "NL",
-    "BEL": "BE", "CRO": "HR", "NOR": "NO", "SUI": "CH",
+    "FRA": "FR",
+    "ESP": "ES",
+    "POR": "PT",
+    "GER": "DE",
+    "NED": "NL",
+    "BEL": "BE",
+    "CRO": "HR",
+    "NOR": "NO",
+    "SUI": "CH",
     "AUS": "AT",  # Autriche dans ce dataset (voir note ci-dessus)
-    "AUT": "AT", "ITA": "IT", "DEN": "DK", "POL": "PL", "SWE": "SE",
-    "TUR": "TR", "UKR": "UA", "CZE": "CZ", "SVK": "SK", "ROU": "RO",
-    "IRL": "IE", "ISL": "IS", "SRB": "RS", "GRE": "GR", "ALB": "AL",
-    "MKD": "MK", "BIH": "BA", "KOS": "XK", "HUN": "HU", "SVN": "SI",
+    "AUT": "AT",
+    "ITA": "IT",
+    "DEN": "DK",
+    "POL": "PL",
+    "SWE": "SE",
+    "TUR": "TR",
+    "UKR": "UA",
+    "CZE": "CZ",
+    "SVK": "SK",
+    "ROU": "RO",
+    "IRL": "IE",
+    "ISL": "IS",
+    "SRB": "RS",
+    "GRE": "GR",
+    "ALB": "AL",
+    "MKD": "MK",
+    "BIH": "BA",
+    "KOS": "XK",
+    "HUN": "HU",
+    "SVN": "SI",
     # Amériques
-    "ARG": "AR", "BRA": "BR", "URU": "UY", "COL": "CO", "ECU": "EC",
-    "PAR": "PY", "CHL": "CL", "PER": "PE", "VEN": "VE", "BOL": "BO",
-    "PAN": "PA", "CRC": "CR", "HON": "HN", "JAM": "JM", "HAI": "HT",
-    "CUR": "CW", "SLV": "SV",
+    "ARG": "AR",
+    "BRA": "BR",
+    "URU": "UY",
+    "COL": "CO",
+    "ECU": "EC",
+    "PAR": "PY",
+    "CHL": "CL",
+    "PER": "PE",
+    "VEN": "VE",
+    "BOL": "BO",
+    "PAN": "PA",
+    "CRC": "CR",
+    "HON": "HN",
+    "JAM": "JM",
+    "HAI": "HT",
+    "CUR": "CW",
+    "SLV": "SV",
     # Asie / Océanie
-    "JPN": "JP", "KOR": "KR", "IRN": "IR", "KSA": "SA", "QAT": "QA",
-    "UZB": "UZ", "JOR": "JO", "IRQ": "IQ", "UAE": "AE", "NZL": "NZ",
+    "JPN": "JP",
+    "KOR": "KR",
+    "IRN": "IR",
+    "KSA": "SA",
+    "QAT": "QA",
+    "UZB": "UZ",
+    "JOR": "JO",
+    "IRQ": "IQ",
+    "UAE": "AE",
+    "NZL": "NZ",
 }
 
 
@@ -344,7 +399,9 @@ def article(slug):
     art = load_article(slug)
     if not art:
         abort(404)
-    return render_template("article.html", meta=art["meta"], content=art["content"], slug=slug)
+    return render_template(
+        "article.html", meta=art["meta"], content=art["content"], slug=slug
+    )
 
 
 @app.template_filter("format_day_fr")

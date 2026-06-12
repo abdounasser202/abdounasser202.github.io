@@ -1,5 +1,5 @@
 ---
-title: "Impressum / Mentions légales — Fandena"
+title: "Impressum / Mentions légales - Fandena"
 h1: "Impressum / Mentions légales"
 description: "Mentions légales et informations sur l'éditeur du site Fandena."
 date: 2026-06-12
@@ -7,25 +7,21 @@ date: 2026-06-12
 
 ## Éditeur du site
 
-[À VÉRIFIER] Nom et prénom (ou raison sociale)
+ABDOU NASSER
 
-[À VÉRIFIER] Adresse postale complète (rue, code postal, ville, pays)
+Letzlinger str 2, 39106, Magdeburg
 
 ## Contact
 
-[À VÉRIFIER] E-mail de contact
-
-[À VÉRIFIER] Téléphone (si applicable)
+nasser@peef.dev
 
 ## Responsable du contenu
 
 Responsable du contenu éditorial au sens du § 18 al. 2 MStV (Allemagne) :
 
-[À VÉRIFIER] Nom et adresse (identiques à l'éditeur ci-dessus si même personne)
+ABDOU NASSER
 
-## TVA
-
-[À VÉRIFIER] Numéro de TVA intracommunautaire (le cas échéant) ou mention « régime de franchise / Kleinunternehmerregelung gemäß § 19 UStG »
+Letzlinger str 2, 39106, Magdeburg
 
 ## Règlement des litiges en ligne
 

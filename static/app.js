@@ -288,3 +288,33 @@
       });
   });
 })();
+
+/*----------------------------------------
+            BANDEAU COOKIES
+------------------------------------------*/
+(function () {
+  "use strict";
+
+  var banner = document.getElementById("cookie-banner");
+  if (!banner) return;
+
+  var acceptBtn = document.getElementById("cookie-accept");
+  var declineBtn = document.getElementById("cookie-decline");
+
+  if (!localStorage.getItem("cookie_consent")) {
+    banner.hidden = false;
+  }
+
+  acceptBtn.addEventListener("click", function () {
+    localStorage.setItem("cookie_consent", "granted");
+    banner.hidden = true;
+    if (typeof gtag === "function") {
+      gtag("consent", "update", { analytics_storage: "granted" });
+    }
+  });
+
+  declineBtn.addEventListener("click", function () {
+    localStorage.setItem("cookie_consent", "denied");
+    banner.hidden = true;
+  });
+})();

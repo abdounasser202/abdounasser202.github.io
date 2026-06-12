@@ -3,10 +3,15 @@
     <head>
         {% if not debug %}
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNFQ18BNRN"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            analytics_storage: localStorage.getItem('cookie_consent') === 'granted' ? 'granted' : 'denied'
+        });
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNFQ18BNRN"></script>
+        <script>
         gtag('js', new Date());
         gtag('config', 'G-MNFQ18BNRN', {
             anonymize_ip: true
@@ -48,6 +53,17 @@
             <main class="content">
                 {% block body %}{% endblock %}
             </main>
+        </div>
+
+        <div id="cookie-banner" class="cookie-banner" hidden>
+            <p class="cookie-text">
+                On utilise Google Analytics pour mesurer l'audience (IP anonymisée).
+                <a href="/confidentialite">En savoir plus</a>.
+            </p>
+            <div class="cookie-actions">
+                <button type="button" id="cookie-decline" class="cookie-btn cookie-decline">Refuser</button>
+                <button type="button" id="cookie-accept" class="cookie-btn cookie-accept">Accepter</button>
+            </div>
         </div>
 
         <script src="/static/app.js" defer></script>

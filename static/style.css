@@ -272,6 +272,90 @@ h1 {
     text-decoration: underline;
 }
 
+.cookie-banner[hidden] {
+    display: none;
+}
+
+.cookie-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px var(--pad);
+    background: var(--surface);
+    border-top: 1px solid var(--divider);
+    font-size: 12px;
+    color: var(--text2);
+}
+
+.cookie-text {
+    margin: 0;
+    flex: 1;
+    min-width: 200px;
+}
+
+@media (max-width: 599px) {
+    .cookie-banner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cookie-text {
+        min-width: 0;
+    }
+
+    .cookie-actions {
+        justify-content: flex-end;
+    }
+}
+
+.cookie-text a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.cookie-btn {
+    height: 32px;
+    padding: 0 14px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.12s;
+}
+
+.cookie-decline {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--divider);
+}
+
+.cookie-decline:hover,
+.cookie-decline:focus-visible {
+    background: var(--divider);
+}
+
+.cookie-accept {
+    background: var(--accent);
+    color: #fff;
+}
+
+.cookie-accept:hover,
+.cookie-accept:focus-visible {
+    background: var(--accent-hover);
+}
+
 /* ---- Bloc ICS ---- */
 .ics-block {
     padding: var(--card-pad);
