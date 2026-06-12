@@ -4,10 +4,12 @@ import hashlib
 import json
 import logging
 from logging.handlers import RotatingFileHandler
+import markdown
 import os
 import re
 import sqlite3
 import urllib.request
+import yaml
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
 
@@ -15,6 +17,7 @@ app = Flask(__name__)
 app.debug = os.environ.get("FLASK_DEBUG", "0") == "1"
 
 DATA_DIR = Path(__file__).parent / "data"
+ARTICLES_DIR = Path(__file__).parent / "articles"
 CANONICAL_HOST = "fandena.net"
 
 # ---------------------------------------------------------------------------
@@ -199,6 +202,35 @@ def load_tournament(slug):
     return t
 
 
+def _article_slug(filename_stem):
+    """Retire un éventuel préfixe numérique (ex: '01-mon-article' -> 'mon-article')."""
+    return re.sub(r"^\d+-", "", filename_stem)
+
+
+def _parse_article(path):
+    raw = path.read_text(encoding="utf-8")
+    _, front_matter, body = raw.split("---", 2)
+    meta = yaml.safe_load(front_matter)
+    html = markdown.markdown(body.strip(), extensions=["extra"])
+    return {"meta": meta, "content": html}
+
+
+def load_article(slug):
+    """Charge un article SEO (frontmatter YAML + markdown) depuis articles/*.md, en ignorant un éventuel préfixe numérique du nom de fichier."""
+    for path in ARTICLES_DIR.glob("*.md"):
+        if _article_slug(path.stem) == slug:
+            return _parse_article(path)
+    return None
+
+
+def list_articles():
+    out = []
+    for path in sorted(ARTICLES_DIR.glob("*.md")):
+        art = _parse_article(path)
+        out.append({"slug": _article_slug(path.stem), **art["meta"]})
+    return out
+
+
 def list_tournaments():
     out = []
     for path in sorted(DATA_DIR.glob("*.json")):
@@ -301,6 +333,18 @@ def tournament(slug):
         by_section=by_section,
         total_matches=len(matches),
     )
+
+
+@app.route("/<slug>")
+def article(slug):
+    # Évite de casser l'ancien comportement (redirection 308 vers /<slug>/ pour un tournoi).
+    if (DATA_DIR / f"{slug}.json").exists():
+        return redirect(url_for("tournament", slug=slug), code=308)
+
+    art = load_article(slug)
+    if not art:
+        abort(404)
+    return render_template("article.html", meta=art["meta"], content=art["content"], slug=slug)
 
 
 @app.template_filter("format_day_fr")
@@ -432,6 +476,10 @@ def sitemap():
     for tour in list_tournaments():
         loc = f"https://{CANONICAL_HOST}/{tour['id']}/"
         lines.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>")
+    for art in list_articles():
+        loc = f"https://{CANONICAL_HOST}/{art['slug']}"
+        art_lastmod = str(art.get("date", lastmod))
+        lines.append(f"  <url><loc>{loc}</loc><lastmod>{art_lastmod}</lastmod></url>")
     lines.append("</urlset>")
     return Response(
         "\n".join(lines),

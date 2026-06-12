@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block head %}
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}" />
+<meta
+  name="robots"
+  content="index, follow, max-snippet:-1, max-image-preview:large"
+/>
+<meta name="author" content="Fandena" />
+<meta name="theme-color" content="#00985f" />
+<link rel="canonical" href="https://fandena.net{{ request.path }}" />
+<link rel="icon" type="image/x-icon" href="/static/favicon.png" sizes="any" />
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="fr_FR" />
+<meta name="apple-mobile-web-app-title" content="Fandena" />
+<meta property="og:image" content="{{ meta.image | default('/static/og-image.png') }}" />
+<meta property="og:image:url" content="{{ meta.image | default('/static/og-image.png') }}" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:title" content="{{ meta.title }}" />
+<meta property="og:description" content="{{ meta.description }}" />
+<meta property="og:url" content="https://fandena.net{{ request.path }}" />
+<meta property="og:site_name" content="Fandena" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ meta.title }}" />
+<meta name="twitter:description" content="{{ meta.description }}" />
+
+<script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{ meta.title }}",
+      "description": "{{ meta.description }}",
+      "datePublished": "{{ meta.date }}",
+      "dateModified": "{{ meta.updated | default(meta.date) }}",
+      "image": "https://fandena.net{{ meta.image | default('/static/og-image.png') }}",
+      "author": {"@type": "Organization", "name": "Fandena", "url": "https://fandena.net"},
+      "publisher": {"@type": "Organization", "name": "Fandena", "url": "https://fandena.net"},
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://fandena.net{{ request.path }}"}
+  }
+</script>
+{% endblock %} {% block body %}
+
+<header class="card page-head">
+  <h1>{{ meta.h1 | default(meta.title) }}</h1>
+</header>
+
+<article class="card article-body">{{ content | safe }}</article>
+
+<aside class="card whatsapp">
+  <p>
+    📲 Tous les pronostics et toutes les coulisses sur WhatsApp.
+    <a
+      class="join-btn"
+      href="https://whatsapp.com/channel/0029VbCiP4X0lwgki6gzib41"
+      target="_blank"
+      rel="noopener"
+      >Rejoindre la Chaîne WhatsApp →</a
+    >
+  </p>
+</aside>
+
+<footer class="note">
+  <p>
+    Fandena — Les matchs des meilleures équipes. Sans pub, sans paris sportifs.
+  </p>
+</footer>
+{% endblock %}
