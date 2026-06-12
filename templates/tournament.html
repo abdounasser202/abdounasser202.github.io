@@ -203,6 +203,35 @@
   </p>
 </div>
 
+<div class="card email-capture">
+  <p class="email-title">🔔 Ne rate pas le prochain tournoi !</p>
+  <p class="email-sub">
+    CAN, Champions League, Liga, Premier League... <br>
+    Laisse ton email, on te prévient dès que ça commence. Zéro spam, promis.
+  </p>
+  <form id="email-form" class="email-form">
+    <input
+      type="email"
+      name="email"
+      id="email-input"
+      placeholder="ton@email.com"
+      autocomplete="email"
+      required
+    />
+    <input
+      type="text"
+      name="website"
+      class="hp-field"
+      tabindex="-1"
+      autocomplete="off"
+      aria-hidden="true"
+    />
+    <input type="hidden" name="source" value="home" />
+    <button type="submit" class="email-submit">Me prévenir</button>
+  </form>
+  <p class="email-msg" id="email-msg" aria-live="polite"></p>
+</div>
+
 <div id="filter-bar" class="filter-bar">
   <div class="chips">
     {% for team in t.fav_teams %}

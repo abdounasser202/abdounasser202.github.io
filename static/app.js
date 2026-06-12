@@ -245,3 +245,46 @@
 
   setInterval(updateNextUp, 1000);
 })();
+
+
+/*----------------------------------------
+            CAPTURES EMAILS
+------------------------------------------*/
+(function () {
+  "use strict";
+
+  var form = document.getElementById("email-form");
+  if (!form) return;
+
+  var msg = document.getElementById("email-msg");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    msg.textContent = "";
+    msg.className = "email-msg";
+
+    fetch("/subscribe", { method: "POST", body: new FormData(form) })
+      .then(function (r) {
+        return r.json().then(function (data) {
+          return { ok: r.ok, data: data };
+        });
+      })
+      .then(function (res) {
+        if (res.ok && res.data.ok) {
+          msg.textContent = "Merci, c'est noté !";
+          msg.className = "email-msg ok";
+          form.reset();
+          if (typeof gtag === "function") {
+            gtag("event", "email_capture");
+          }
+        } else {
+          msg.textContent = "Adresse invalide, vérifie et réessaie.";
+          msg.className = "email-msg err";
+        }
+      })
+      .catch(function () {
+        msg.textContent = "Erreur réseau, réessaie plus tard.";
+        msg.className = "email-msg err";
+      });
+  });
+})();

@@ -5,6 +5,8 @@ import json
 import logging
 from logging.handlers import RotatingFileHandler
 import os
+import re
+import sqlite3
 import urllib.request
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
@@ -28,6 +30,25 @@ _ics_handler = RotatingFileHandler(
 _ics_handler.setFormatter(logging.Formatter("%(asctime)s\t%(message)s"))
 ics_logger.addHandler(_ics_handler)
 ics_logger.propagate = False
+
+# ---------------------------------------------------------------------------
+# Capture email : stockage uniquement (alerte avant le prochain tournoi), pas de newsletter
+# WAL : évite les locks entre workers gunicorn lors des écritures concurrentes
+# ---------------------------------------------------------------------------
+DB_DIR = Path(__file__).parent / "instance"
+DB_DIR.mkdir(exist_ok=True)
+DB_PATH = DB_DIR / "emails.db"
+
+_init_conn = sqlite3.connect(DB_PATH)
+_init_conn.execute("PRAGMA journal_mode=WAL")
+_init_conn.execute(
+    "CREATE TABLE IF NOT EXISTS emails (email TEXT UNIQUE, created TEXT, source TEXT)"
+)
+_init_conn.commit()
+_init_conn.close()
+
+EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+
 
 @app.context_processor
 def inject_debug():
@@ -377,6 +398,28 @@ def calendar_ics(slug):
             "Cache-Control": "public, max-age=3600",
         },
     )
+
+
+@app.route("/subscribe", methods=["POST"])
+def subscribe():
+    # Honeypot : champ invisible (off-screen via CSS), un humain ne le remplit jamais.
+    if request.form.get("website"):
+        return {"ok": True}
+
+    email = request.form.get("email", "").strip().lower()
+    if not EMAIL_RE.match(email):
+        return {"ok": False, "error": "invalid_email"}, 400
+
+    source = request.form.get("source", "home")
+    created = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    conn = sqlite3.connect(DB_PATH)
+    conn.execute(
+        "INSERT OR IGNORE INTO emails (email, created, source) VALUES (?, ?, ?)",
+        (email, created, source),
+    )
+    conn.commit()
+    conn.close()
+    return {"ok": True}
 
 
 @app.route("/sitemap.xml")

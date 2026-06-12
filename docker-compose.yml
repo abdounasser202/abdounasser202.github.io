@@ -5,6 +5,8 @@ services:
       - 5000
     env_file:
       - .env
+    volumes:
+      - emails_data:/app/instance
     depends_on:
       database:
         condition: service_healthy
@@ -27,3 +29,4 @@ services:
 
 volumes:
   postgres_data:
+  emails_data:
